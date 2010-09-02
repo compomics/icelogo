@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.compomics.icelogo.gui.forms.IceLogo">
+  <grid id="27dc6" binding="jpanContent" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="723" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="empty"/>
+    <children>
+      <hspacer id="95f31">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </hspacer>
+      <grid id="ebef3" binding="jpanStatus" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.1" weighty="0.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <hspacer id="74726">
+            <constraints>
+              <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+          </hspacer>
+          <grid id="cad5a" binding="jpanMessage" custom-create="true" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="5" left="5" bottom="5" right="5" weightx="0.0" weighty="0.0" ipadx="3" ipady="3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="428a0" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="7" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="3" bottom="0" right="3" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="p-value"/>
+            </properties>
+          </component>
+          <component id="2cf63" class="javax.swing.JSpinner" binding="spinPValue" custom-create="true">
+            <constraints>
+              <grid row="0" column="8" row-span="3" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="5" bottom="0" right="5" weightx="0.0" weighty="0.0" ipadx="20"/>
+            </constraints>
+            <properties>
+              <toolTipText value="Enter a general p-value"/>
+            </properties>
+          </component>
+          <toolbar id="f1fe4">
+            <constraints>
+              <grid row="0" column="6" row-span="3" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="-1" height="20"/>
+              </grid>
+              <gridbag top="5" left="5" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <margin top="10" left="0" bottom="10" right="0"/>
+            </properties>
+            <border type="empty"/>
+            <children>
+              <component id="424aa" class="javax.swing.JButton" binding="btnColor" custom-create="true">
+                <constraints/>
+                <properties>
+                  <margin top="10" left="5" bottom="10" right="5"/>
+                  <text value=""/>
+                  <toolTipText value="Logo color chooser"/>
+                </properties>
+              </component>
+              <component id="ecf2a" class="javax.swing.JButton" binding="btnParam" custom-create="true">
+                <constraints/>
+                <properties>
+                  <margin top="10" left="5" bottom="10" right="5"/>
+                  <text value=""/>
+                  <toolTipText value="Logo parameters"/>
+                </properties>
+              </component>
+              <component id="f9df7" class="javax.swing.JButton" binding="btnAaParam" custom-create="true">
+                <constraints/>
+                <properties>
+                  <margin top="10" left="5" bottom="10" right="5"/>
+                  <text value=""/>
+                  <toolTipText value="Aa parameter matrix chooser"/>
+                </properties>
+              </component>
+              <component id="73793" class="javax.swing.JButton" binding="addSpecies" custom-create="true">
+                <constraints/>
+                <properties>
+                  <margin top="10" left="5" bottom="10" right="5"/>
+                  <toolTipText value="Add a the AA composition of specific species to iceLogo"/>
+                </properties>
+              </component>
+            </children>
+          </toolbar>
+          <component id="c4a19" class="javax.swing.JRadioButton" binding="iceLogoRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="8" left="5" bottom="2" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <selected value="true"/>
+              <text value="iceLogo"/>
+            </properties>
+          </component>
+          <component id="718e3" class="javax.swing.JRadioButton" binding="heatmapRadioButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="2" left="5" bottom="8" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <selected value="false"/>
+              <text value="Heatmap"/>
+            </properties>
+          </component>
+          <component id="f265b" class="javax.swing.JRadioButton" binding="barchartRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="8" left="5" bottom="2" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <selected value="true"/>
+              <text value="Barchart"/>
+            </properties>
+          </component>
+          <component id="c8fb7" class="javax.swing.JRadioButton" binding="sublogoRadioButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="2" left="5" bottom="8" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Sublogo"/>
+            </properties>
+          </component>
+          <component id="d1a06" class="javax.swing.JRadioButton" binding="sequenceLogoRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="8" left="5" bottom="2" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Sequence logo"/>
+            </properties>
+          </component>
+          <component id="368c8" class="javax.swing.JRadioButton" binding="AAParameterMatrixRadioButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="2" left="5" bottom="8" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="AA parameter matrix"/>
+            </properties>
+          </component>
+          <component id="14b54" class="javax.swing.JProgressBar" binding="mainProgress" custom-create="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="c3a3c" class="javax.swing.JRadioButton" binding="conservationLogoRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="8" left="5" bottom="2" right="5" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Conservation line"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <toolbar id="44182" binding="tlbIcons" custom-create="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="5" left="5" bottom="5" right="5" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <margin top="10" left="0" bottom="10" right="0"/>
+          <orientation value="1"/>
+        </properties>
+        <clientProperties>
+          <JToolBar.isRollover class="java.lang.Boolean" value="true"/>
+        </clientProperties>
+        <border type="empty"/>
+        <children>
+          <component id="f0a2" class="javax.swing.JButton" binding="btnSampling" custom-create="true">
+            <constraints/>
+            <properties>
+              <margin top="10" left="5" bottom="10" right="5"/>
+              <text value=""/>
+              <toolTipText value="New one sample experiment"/>
+            </properties>
+          </component>
+          <component id="34cff" class="javax.swing.JButton" binding="btnStatic" custom-create="true">
+            <constraints/>
+            <properties>
+              <margin top="10" left="5" bottom="10" right="5"/>
+              <text value=""/>
+              <toolTipText value="New static experiment"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+      <tabbedpane id="a2838" binding="tabPanel">
+        <constraints>
+          <grid row="0" column="1" row-span="5" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="200" height="200"/>
+          </grid>
+          <gridbag top="10" left="0" bottom="0" right="0" weightx="0.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <tabLayoutPolicy value="0"/>
+          <tabPlacement value="1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="51f2b" binding="jpanMain" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Intro"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </tabbedpane>
+      <vspacer id="284b8">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="c24ef">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="1.0"/>
+        </constraints>
+      </vspacer>
+      <toolbar id="d564b">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="20"/>
+          </grid>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <margin top="0" left="0" bottom="0" right="0"/>
+          <orientation value="0"/>
+        </properties>
+        <border type="empty"/>
+        <children>
+          <component id="3eef7" class="javax.swing.JButton" binding="iSaveToPdfButton" custom-create="true">
+            <constraints/>
+            <properties>
+              <margin top="10" left="5" bottom="10" right="5"/>
+              <text value=""/>
+              <toolTipText value="Save current analysis to pdf"/>
+            </properties>
+          </component>
+          <component id="abf45" class="javax.swing.JButton" binding="btnClose" custom-create="true">
+            <constraints/>
+            <properties>
+              <margin top="10" left="5" bottom="10" right="5"/>
+              <text value=""/>
+            </properties>
+            <clientProperties>
+              <html.disable class="java.lang.Boolean" value="false"/>
+            </clientProperties>
+          </component>
+        </children>
+      </toolbar>
+    </children>
+  </grid>
+</form>

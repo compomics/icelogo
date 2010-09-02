@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.compomics.icelogo.gui.forms.wizard.ReferenceStep">
+  <grid id="27dc6" binding="jpanContent" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="878" height="458"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="12f73" binding="jpanReferenceOptions" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+        <border type="none" title="Options"/>
+        <children>
+          <component id="a0014" class="javax.swing.JLabel" binding="lblLength">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Length"/>
+            </properties>
+          </component>
+          <component id="f4ea6" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Fasta file"/>
+            </properties>
+          </component>
+          <component id="276c1" class="javax.swing.JComboBox" binding="cmbFastaFile">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0" ipadx="30"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="1a000" class="javax.swing.JSpinner" binding="spinLength">
+            <constraints>
+              <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0" ipadx="30"/>
+            </constraints>
+            <properties/>
+          </component>
+          <hspacer id="52ef9">
+            <constraints>
+              <grid row="0" column="7" row-span="17" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+          </hspacer>
+          <component id="6a209" class="javax.swing.JLabel" binding="lblIterationSize">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Iteration size"/>
+            </properties>
+          </component>
+          <component id="e179a" class="javax.swing.JSpinner" binding="spinIterationSize" custom-create="true">
+            <constraints>
+              <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0" ipadx="30"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="18f1e" class="javax.swing.JLabel" binding="lblStartPosition">
+            <constraints>
+              <grid row="9" column="0" row-span="10" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Terminal index"/>
+            </properties>
+          </component>
+          <component id="3ca63" class="javax.swing.JSpinner" binding="spinStartPosition">
+            <constraints>
+              <grid row="15" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0" ipadx="30"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="8efaa" class="javax.swing.JRadioButton" binding="rdbCterm">
+            <constraints>
+              <grid row="16" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="C-terminus"/>
+            </properties>
+          </component>
+          <component id="d5c55" class="javax.swing.JRadioButton" binding="rdbNterm">
+            <constraints>
+              <grid row="15" column="5" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <selected value="true"/>
+              <text value="N-terminus"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="72605" binding="jpanReferenceType" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="0" column="1" row-span="4" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="398a0" class="javax.swing.JRadioButton" binding="rdbRandom">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Random"/>
+            </properties>
+          </component>
+          <component id="20807" class="javax.swing.JLabel" binding="lblIllustration">
+            <constraints>
+              <grid row="0" column="2" row-span="12" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="df9f6" class="javax.swing.JRadioButton" binding="rdbRegional">
+            <constraints>
+              <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Regional"/>
+            </properties>
+          </component>
+          <hspacer id="bdb87">
+            <constraints>
+              <grid row="1" column="3" row-span="12" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+          </hspacer>
+          <component id="85485" class="javax.swing.JRadioButton" binding="rdbTerminal">
+            <constraints>
+              <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="10" bottom="10" right="0" weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Terminal"/>
+            </properties>
+          </component>
+          <vspacer id="5f32b">
+            <constraints>
+              <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="1.0"/>
+            </constraints>
+          </vspacer>
+          <hspacer id="40f50">
+            <constraints>
+              <grid row="1" column="1" row-span="11" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="1.0" weighty="0.0"/>
+            </constraints>
+          </hspacer>
+          <vspacer id="59649">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="1.0"/>
+            </constraints>
+          </vspacer>
+        </children>
+      </grid>
+      <vspacer id="2b4f2">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="1.0"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="rdbSamplingGroup" bound="true">
+      <member id="85485"/>
+      <member id="85485"/>
+      <member id="398a0"/>
+      <member id="29a6d"/>
+      <member id="df9f6"/>
+    </group>
+    <group name="rdbAnchorGroup">
+      <member id="d5c55"/>
+      <member id="d5c55"/>
+      <member id="8efaa"/>
+    </group>
+  </buttonGroups>
+</form>

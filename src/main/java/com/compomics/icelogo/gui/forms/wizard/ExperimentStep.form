@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.compomics.icelogo.gui.forms.wizard.ExperimentStep">
+  <grid id="27dc6" binding="jpanContent" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="584" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="a37b" binding="jpanSequenceTwo" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="6c993">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="20" bottom="0" right="20" weightx="1.0" weighty="1.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="993d9" class="javax.swing.JTextPane" binding="txtSequencesTwo">
+                <constraints/>
+                <properties>
+                  <font name="Ravie" size="12"/>
+                  <margin top="10" left="15" bottom="10" right="15"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="55711" binding="jpanSequence" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="2d788">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="20" bottom="0" right="20" weightx="1.0" weighty="1.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="baf0f" class="javax.swing.JTextPane" binding="txtSequence">
+                <constraints/>
+                <properties>
+                  <font name="Courier New" size="12"/>
+                  <margin top="10" left="15" bottom="10" right="15"/>
+                  <text value=""/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <component id="c1fe6" class="javax.swing.JCheckBox" binding="chkSecondSet">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag top="5" left="0" bottom="5" right="0" weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <horizontalTextPosition value="2"/>
+          <text value="Second set?"/>
+          <verticalTextPosition value="0"/>
+        </properties>
+      </component>
+      <component id="3d6db" class="javax.swing.JSpinner" binding="spinAnchor">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0" ipadx="30"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
