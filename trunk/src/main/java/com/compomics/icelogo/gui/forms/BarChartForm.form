@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.compomics.icelogo.gui.forms.BarChartForm">
+  <grid id="27dc6" binding="jpanContent" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="500" height="393"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="b7343" binding="jpanSlider" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="10" bottom="0" right="10" weightx="1.0" weighty="0.1"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="654dd" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0" ipadx="40"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <horizontalAlignment value="11"/>
+              <text value="Position: "/>
+            </properties>
+          </component>
+          <component id="21c62" class="javax.swing.JSlider" binding="sldPosition" custom-create="true" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="5" left="5" bottom="5" right="5" weightx="1.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="56525" binding="jpanGraphable" layout-manager="GridBagLayout">
+        <constraints>
+          <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="1.0"/>
+        </constraints>
+        <properties>
+          <background color="-1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="e2fa4" binding="jpanChart" layout-manager="BorderLayout" hgap="10" vgap="10">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="24" height="347"/>
+              </grid>
+              <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="0.9"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="empty">
+              <font/>
+              <title-color color="-16777216"/>
+            </border>
+            <children/>
+          </grid>
+          <grid id="c51ea" binding="jpanLegend" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="10" bottom="0" right="10" weightx="1.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="b16f1" class="javax.swing.JLabel" binding="lblRefColor">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="2" left="0" bottom="2" right="0" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-6710887"/>
+                  <maximumSize width="15" height="15"/>
+                  <minimumSize width="15" height="15"/>
+                  <opaque value="true"/>
+                  <preferredSize width="15" height="15"/>
+                  <text value=" "/>
+                </properties>
+              </component>
+              <component id="850a8" class="javax.swing.JLabel" binding="lblPosColor">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="2" left="0" bottom="2" right="0" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-6710887"/>
+                  <maximumSize width="15" height="15"/>
+                  <minimumSize width="15" height="15"/>
+                  <opaque value="true"/>
+                  <preferredSize width="15" height="15"/>
+                  <text value=" "/>
+                </properties>
+              </component>
+              <component id="92f6f" class="javax.swing.JLabel" binding="lblPosTwoColor">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="2" left="0" bottom="2" right="0" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-6710887"/>
+                  <maximumSize width="15" height="15"/>
+                  <minimumSize width="15" height="15"/>
+                  <opaque value="true"/>
+                  <preferredSize width="15" height="15"/>
+                  <text value=" "/>
+                </properties>
+              </component>
+              <component id="47fd" class="javax.swing.JLabel" binding="lblRefText">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="5" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="RefText"/>
+                </properties>
+              </component>
+              <component id="92501" class="javax.swing.JLabel" binding="lblPosText">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="5" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="PosText"/>
+                </properties>
+              </component>
+              <component id="2be59" class="javax.swing.JLabel" binding="lblPosTwoText">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="5" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <text value="PosTwoText"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

@@ -1,0 +1,614 @@
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2009.9.22)  9 NOV 2009 11:22
+entering extended mode
+**iceLogo.tex
+(iceLogo.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\book.cls"
+Document Class: book 2005/09/16 v1.4f Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\bk11.clo"
+File: bk11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2002/01/22 v2.2d
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2001/10/25 v2.2f
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\makeidx.sty"
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\fixltx2e.sty"
+Package: fixltx2e 2006/03/24 v1.1n fixes to LaTeX
+LaTeX Info: Redefining \em on input line 420.
+LaTeX Info: The control sequence `\[' is already robust on input line 471.
+LaTeX Info: The control sequence `\]' is already robust on input line 472.
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\textcomp.sty"
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\ts1enc.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\epstopdf.sty"
+Package: epstopdf 2009/07/16 v2.2 Conversion with epstopdf on the fly (HO)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\epstopdf-base.sty"
+Package: epstopdf-base 2009/07/16 v2.2 Base part for package epstopdf
+
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\grfext.sty"
+Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\oberdiek\kvoptions.sty"
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\kvsetkeys.sty"
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2009/04/10 v0.4 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+("C:\Program Files\MiKTeX 2.7\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected on input line 144.
+)
+
+Package epstopdf Warning: No graphics package `graphic{s,x}' loaded.
+
+)) ("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphics.sty"
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2008/09/08 v0.04l Graphics/color for pdfTeX
+\Gread@gobject=\count100
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\tools\xspace.sty"
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\inputenc.sty"
+Package: inputenc 2006/05/05 v1.1b Input encoding file
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\latin1.def"
+File: latin1.def 2006/05/05 v1.1b Input encoding file
+))
+("C:\Program Files\MiKTeX 2.7\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count101
+\float@exts=\toks22
+\float@box=\box28
+\@float@everytoks=\toks23
+\@floatcapt=\box29
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\listings\listings.sty"
+\lst@mode=\count102
+\lst@gtempboxa=\box30
+\lst@token=\toks24
+\lst@length=\count103
+\lst@currlwidth=\dimen114
+\lst@column=\count104
+\lst@pos=\count105
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
+\lst@newlines=\count106
+\lst@lineno=\count107
+\lst@maxwidth=\dimen117
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count108
+\lst@skipnumbers=\count109
+\lst@framebox=\box31
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\listings\listings.cfg"
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\natbib\natbib.sty"
+Package: natbib 2009/07/16 8.31 (PWD, AO)
+\bibhang=\skip46
+\bibsep=\skip47
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count110
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\tocbibind\tocbibind.sty"
+Package: tocbibind 2009/09/04 v1.5i extra ToC listings
+
+
+Package tocbibind Note: The document has chapter divisions.
+
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) ("C:\Program Files\MiKTeX 2.7\tex\latex\marvosym\marvosym.sty"
+Package: marvosym 2006/05/11 v2.1 Martin Vogel's Symbols font definitions
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\siunits\SIunits.sty"
+Package: SIunits 2007/12/02 v1.36 Support for the International System of units
+ (MH)
+
+
+\@qskwidth=\skip48
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 46.
+\symgreek=\mathgroup6
+("C:\Program Files\MiKTeX 2.7\tex\latex\siunits\SIunits.cfg")
+LaTeX Info: Redefining \usk on input line 576.
+
+Option `thinspace' provided!
+LaTeX Info: Redefining \@qsk on input line 576.
+Option `thinqspace' provided!
+Option `squaren' provided!
+Option `Gray' provided!
+) ("C:\Program Files\MiKTeX 2.7\tex\latex\base\flafter.sty"
+Package: flafter 2000/07/23 v1.2i Standard LaTeX floats after reference (FMi)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\lscape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\fancyhdr\fancyhdr.sty"
+\fancy@headwidth=\skip49
+\f@ncyO@elh=\skip50
+\f@ncyO@erh=\skip51
+\f@ncyO@olh=\skip52
+\f@ncyO@orh=\skip53
+\f@ncyO@elf=\skip54
+\f@ncyO@erf=\skip55
+\f@ncyO@olf=\skip56
+\f@ncyO@orf=\skip57
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\tools\verbatim.sty"
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks25
+\verbatim@line=\toks26
+\verbatim@in@stream=\read1
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\subfig\subfig.sty"
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\caption\caption.sty"
+Package: caption 2008/08/24 v3.1j Customizing captions (AR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\caption\caption3.sty"
+Package: caption3 2008/08/24 v3.1j caption3 kernel (AR)
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@indent=\dimen121
+\caption@parindent=\dimen122
+\caption@hangindent=\dimen123
+)
+\c@ContinuedFloat=\count111
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+)
+\c@KVtest=\count112
+\sf@farskip=\skip58
+\sf@captopadj=\dimen124
+\sf@capskip=\skip59
+\sf@nearskip=\skip60
+\c@subfigure=\count113
+\c@subfigure@save=\count114
+\c@lofdepth=\count115
+\c@subtable=\count116
+\c@subtable@save=\count117
+\c@lotdepth=\count118
+\sf@top=\skip61
+\sf@bottom=\skip62
+) (iceLogo.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 84.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\ts1cmr.fd"
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 84.
+
+("C:\Program Files\MiKTeX 2.7\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count119
+\scratchdimen=\dimen125
+\scratchbox=\box32
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen126
+\MPnumerator=\count123
+\everyMPtoPDFconversion=\toks28
+)
+\c@lstlisting=\count124
+
+Option `squaren' provided! 
+ Command \squaren defined by SIunits package!
+
+Option `Gray' provided! 
+ Command \Gray defined by SIunits package!
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 84.
+Package caption Info: End \AtBeginDocument code.
+<images/VIB.pdf, id=1, 869.2475pt x 1003.75pt>
+File: images/VIB.pdf Graphic file (type pdf)
+ <use images/VIB.pdf>
+<images/ugent.pdf, id=2, 107.9232pt x 76.3653pt>
+File: images/ugent.pdf Graphic file (type pdf)
+ <use images/ugent.pdf>
+LaTeX Font Info:    Try loading font information for U+msa on input line 123.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 123.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
+
+
+
+{C:/Documents and Settings/All Users/Application Data/MiKTeX/2.7/pdftex/config/
+pdftex.map} <images/VIB.pdf> <images/ugent.pdf>] (iceLogo.toc [1
+
+])
+\tf@toc=\write3
+ [2] [3
+
+] [4] [1
+
+
+]
+Chapter 1.
+[2
+
+]
+Chapter 2.
+[3
+
+] [4] [5
+
+]
+Chapter 3.
+[6
+
+] <images/static.png, id=65, 50.1875pt x 66.2475pt>
+File: images/static.png Graphic file (type png)
+ <use images/static.png>
+<images/static_panel.png, id=67, 582.978pt x 409.53pt>
+File: images/static_panel.png Graphic file (type png)
+
+<use images/static_panel.png> [7 <images/static.png>]
+<images/2negSet.png, id=72, 400.49625pt x 390.258pt>
+File: images/2negSet.png Graphic file (type png)
+ <use images/2negSet.png>
+[8 <images/static_panel.png>] [9 <images/2negSet.png>]
+<images/sampling_icon.png, id=82, 50.1875pt x 66.2475pt>
+File: images/sampling_icon.png Graphic file (type png)
+
+<use images/sampling_icon.png>
+<images/sampling_reference.png, id=83, 1084.05pt x 722.7pt>
+File: images/sampling_reference.png Graphic file (type png)
+
+<use images/sampling_reference.png> [10 <images/sampling_icon.png>] [11 <images
+/sampling_reference.png>] <images/random.png, id=94, 539.01375pt x 190.7125pt>
+File: images/random.png Graphic file (type png)
+
+<use images/random.png> [12]
+<images/terminal.png, id=103, 537.00626pt x 195.73125pt>
+File: images/terminal.png Graphic file (type png)
+
+<use images/terminal.png>
+<images/regional.png, id=104, 539.01375pt x 190.7125pt>
+File: images/regional.png Graphic file (type png)
+
+<use images/regional.png> [13 <images/random.png> <images/terminal.png>]
+[14 <images/regional.png>]
+<images/fasta_download.png, id=115, 500.87125pt x 305.14pt>
+File: images/fasta_download.png Graphic file (type png)
+
+<use images/fasta_download.png> [15 <images/fasta_download.png>]
+<images/exp_1.png, id=120, 1044.90375pt x 584.1825pt>
+File: images/exp_1.png Graphic file (type png)
+ <use images/exp_1.png>
+<images/exp_1_anchor.png, id=121, 969.6225pt x 549.05125pt>
+File: images/exp_1_anchor.png Graphic file (type png)
+
+<use images/exp_1_anchor.png> [16 <images/exp_1.png> <images/exp_1_anchor.png>]
+<images/exp_2.png, id=129, 1044.90375pt x 584.1825pt>
+File: images/exp_2.png Graphic file (type png)
+ <use images/exp_2.png>
+<images/exp_2_anchor.png, id=130, 969.6225pt x 549.05125pt>
+File: images/exp_2_anchor.png Graphic file (type png)
+
+<use images/exp_2_anchor.png>
+<images/overview.png, id=131, 1054.94125pt x 674.52pt>
+File: images/overview.png Graphic file (type png)
+
+<use images/overview.png>
+<images/overview_expert.png, id=132, 963.6pt x 705.63625pt>
+File: images/overview_expert.png Graphic file (type png)
+
+<use images/overview_expert.png> [17 <images/exp_2.png> <images/exp_2_anchor.pn
+g>] [18]
+Overfull \vbox (5.46628pt too high) has occurred while \output is active []
+
+
+[19 <images/overview.png> <images/overview_expert.png>] [20]
+Chapter 4.
+[21
+
+] <images/barchart.pdf, id=153, 880.28876pt x 491.8375pt>
+File: images/barchart.pdf Graphic file (type pdf)
+
+<use images/barchart.pdf> [22]
+<images/heatmap.pdf, id=157, 172.97694pt x 278.37068pt>
+File: images/heatmap.pdf Graphic file (type pdf)
+
+<use images/heatmap.pdf> [23 <images/barchart.pdf>] [24 <images/heatmap.pdf>]
+<images/slTryp.png, id=301, 200.75pt x 702.625pt>
+File: images/slTryp.png Graphic file (type png)
+ <use images/slTryp.png>
+[25 <images/slTryp.png (PNG copy)>]
+<images/10000random.png, id=306, 857.2025pt x 421.575pt>
+File: images/10000random.png Graphic file (type png)
+
+<use images/10000random.png> [26 <images/10000random.png>]
+<images/subLogo.png, id=312, 626.34pt x 407.72325pt>
+File: images/subLogo.png Graphic file (type png)
+ <use images/subLogo.png>
+[27 <images/subLogo.png>] [28] [29]
+Chapter 5.
+[30
+
+] <images/color.png, id=327, 40.15pt x 40.15pt>
+File: images/color.png Graphic file (type png)
+ <use images/color.png>
+<images/param.png, id=328, 40.15pt x 40.15pt>
+File: images/param.png Graphic file (type png)
+ <use images/param.png>
+<images/gen_param.png, id=329, 391.4625pt x 361.35pt>
+File: images/gen_param.png Graphic file (type png)
+
+<use images/gen_param.png> [31 <images/color.png> <images/param.png>] [32 <imag
+es/gen_param.png>] [33] <images/aaparam.png, id=344, 40.15pt x 40.15pt>
+File: images/aaparam.png Graphic file (type png)
+
+<use images/aaparam.png>
+<images/Aa_paramter_chooser.png, id=345, 499.26524pt x 340.27126pt>
+File: images/Aa_paramter_chooser.png Graphic file (type png)
+
+<use images/Aa_paramter_chooser.png> [34 <images/aaparam.png>]
+<images/save.png, id=350, 30.1125pt x 30.1125pt>
+File: images/save.png Graphic file (type png)
+ <use images/save.png>
+<images/adder.png, id=351, 40.15pt x 40.15pt>
+File: images/adder.png Graphic file (type png)
+ <use images/adder.png>
+<images/adder_panel.png, id=352, 421.575pt x 188.50426pt>
+File: images/adder_panel.png Graphic file (type png)
+
+<use images/adder_panel.png> [35 <images/Aa_paramter_chooser.png> <images/save.
+png> <images/adder.png>] [36 <images/adder_panel.png>]
+Chapter 6.
+[37
+
+] (iceLogo.aux) ) 
+Here is how much of TeX's memory you used:
+ 6514 strings out of 95304
+ 88683 string characters out of 1183032
+ 156485 words of memory out of 1500000
+ 9587 multiletter control sequences out of 110000
+ 16033 words of font info for 59 fonts, out of 3000000 for 5000
+ 14 hyphenation exceptions out of 8191
+ 44i,13n,45p,1265b,445s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Documents and Settings\All Users\Application Data\MiKTeX\
+2.7\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1095.pk><C:/Program Files/MiKTeX 2.7
+/fonts/type1/bluesky/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/blu
+esky/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmbxti10
+.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmcsc10.pfb><C:/Progra
+m Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmex10.pfb><C:/Program Files/MiKTeX 2
+.7/fonts/type1/bluesky/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/b
+luesky/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmmi8.p
+fb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr10.pfb><C:/Program Fi
+les/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.7/fo
+nts/type1/bluesky/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/
+cm/cmr8.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr9.pfb><C:/Pr
+ogram Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmsy10.pfb><C:/Program Files/MiKT
+eX 2.7/fonts/type1/bluesky/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.7/fonts/type
+1/bluesky/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmt
+i9.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmtt10.pfb><C:/Progr
+am Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmtt12.pfb><C:/Program Files/MiKTeX 
+2.7/fonts/type1/bluesky/ams/msam10.pfb>
+Output written on iceLogo.pdf (42 pages, 1314286 bytes).
+PDF statistics:
+ 434 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+
