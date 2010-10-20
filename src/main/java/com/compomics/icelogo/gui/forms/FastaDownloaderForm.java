@@ -82,13 +82,12 @@ public class FastaDownloaderForm extends JFrame {
                 //check if a species is selected
                 if (iSelectedSpecies != null) {
                     //open a file saver
-                    /*JFileChooser fc = new JFileChooser();
+                    JFileChooser fc = new JFileChooser();
                     fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                     fc.showSaveDialog(new JFrame());
                     final String lFolderLocation = fc.getSelectedFile().getAbsolutePath();
-                    */
+
                     final MainInformationFeeder iFeeder = MainInformationFeeder.getInstance();
-                    final String lFolderLocation = iFeeder.getParentPathToConfiguration();
                     final Vector lFilename = new Vector();
                     SwingWorker saver = new SwingWorker() {
                         public Boolean construct() {
@@ -98,6 +97,7 @@ public class FastaDownloaderForm extends JFrame {
                             progressBar1.setStringPainted(true);
                             progressBar1.setString("");
                             saveButton.setEnabled(false);
+
                             FastaDatabaseDownloader lDownloaderFasta = new FastaDatabaseDownloader(lFolderLocation, iSelectedSpecies.getSpecieName(), progressBar1);
                             boolean allOk = lDownloaderFasta.start();
                             lFilename.add(lDownloaderFasta.getDatabaseFilename());
