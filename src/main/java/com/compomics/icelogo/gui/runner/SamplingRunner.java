@@ -9,6 +9,7 @@ import com.compomics.icelogo.core.factory.AminoAcidStatisticsFactory;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
 import com.compomics.icelogo.core.interfaces.ISequenceSet;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
+import com.compomics.icelogo.core.io.MatrixDataModelSaver;
 import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
 import com.compomics.icelogo.core.model.TwoSampleMatrixDataModel;
 import com.compomics.icelogo.gui.component.Messenger;
@@ -195,9 +196,9 @@ public class SamplingRunner extends SwingWorker {
     /**
      * Update the graphic panels after the MatrixDataModel has been created.
      *
-     * @param aModel
+     * @param aDataModel
      */
-    private void updateGraphics(final MatrixDataModel aModel) {
+    private void updateGraphics(final MatrixDataModel aDataModel) {
         iSamplingWizard.setForwordButtonEnabled(true);
         iAcceptor.removeAll();
         iAcceptor.removeAllSavables();
@@ -210,75 +211,47 @@ public class SamplingRunner extends SwingWorker {
         MainInformationFeeder lFeeder = MainInformationFeeder.getInstance();
         // Add the logo
         if (lFeeder.isUseIceLogo()) {
-            IceLogoComponent logo = new IceLogoComponent(aModel, false);
+            IceLogoComponent logo = new IceLogoComponent(aDataModel, false);
             iAcceptor.addComponent(logo, "iceLogo");
-            iAcceptor.addGraphable(logo);
+            iAcceptor.addSavable(logo);
         }
+
+        // Add the saver for the datamodel.
+        MatrixDataModelSaver lMatrixDataModelSaver = new MatrixDataModelSaver(aDataModel);
+        iAcceptor.addSavable(lMatrixDataModelSaver);
 
         //Add the barchart
         if (lFeeder.isUseBarchart()) {
-            BarChartForm lSliding = new BarChartForm(aModel);
+            BarChartForm lSliding = new BarChartForm(aDataModel);
             iAcceptor.addComponent(lSliding.$$$getRootComponent$$$(), "Bar chart");
-            iAcceptor.addGraphable(lSliding);
+            iAcceptor.addSavable(lSliding);
         }
-
-        /*if (lFeeder.isUseKlogoGraph()) {
-            // Get the clustered sequence sets from the information feeder.
-            SequenceClusterer k = MainInformationFeeder.getInstance().getSequenceClusterer();
-            ISequenceSet[] lClusteredSequenceSets = k.getSequenceClusters();
-
-            // The cluster models to be.
-            MatrixDataModel[] lClusteredMatrixDatamodels = new MatrixDataModel[k.getClusterCount()];
-
-            // Get the reference statistics.
-            int lNumberOfPositions = aModel.getNumberOfPositions();
-            AminoAcidStatistics[] lReferenceStatistics = new AminoAcidStatistics[lNumberOfPositions];
-            for (int i = 0; i < lNumberOfPositions; i++) {
-                lReferenceStatistics[i] = aModel.getReferenceAminoAcidStatistics(i);
-            }
-
-            // Now re-make the models based on the distinct clusters.
-            for (int i = 0; i < lClusteredSequenceSets.length; i++) {
-                // Get aminoacid statistics per sequence set cluster.
-                AminoAcidStatistics[] lClusterExperimentStatistics = createSequenceSetStatistics(lClusteredSequenceSets[i]);
-
-                String lName = "cluster" + (i + 1);
-                lClusteredMatrixDatamodels[i] =
-                        new OneSampleMatrixDataModel(lReferenceStatistics, lClusterExperimentStatistics, lName);
-            }
-
-            KLogoComponent lKlogo = new KLogoComponent(lClusteredMatrixDatamodels);
-
-            iAcceptor.addComponent(lKlogo.getContentPanel(), "K-Logo");
-
-        }    */
-
 
         // Add the sequence logo
         if (lFeeder.isUseSequenceLogo() && !iFeeder.isTwoExperiment()) {
-            SequenceLogoComponent lSequenceLogo = new SequenceLogoComponent(aModel);
+            SequenceLogoComponent lSequenceLogo = new SequenceLogoComponent(aDataModel);
             iAcceptor.addComponent(lSequenceLogo, "Sequence logo");
-            iAcceptor.addGraphable(lSequenceLogo);
+            iAcceptor.addSavable(lSequenceLogo);
         }
 
         // Add the AaParamterComponent
         if (lFeeder.isUseAaParameterGraph()) {
-            AAIndexComponent lAaParam = new AAIndexComponent(aModel);
+            AAIndexComponent lAaParam = new AAIndexComponent(aDataModel);
             iAcceptor.addComponent(lAaParam, "Aa Parameter");
-            iAcceptor.addGraphable(lAaParam);
+            iAcceptor.addSavable(lAaParam);
         }
         // Add the HeatMap
         if (lFeeder.isUseHeatmap()) {
-            HeatMapComponent lHeatmap = new HeatMapComponent(aModel);
+            HeatMapComponent lHeatmap = new HeatMapComponent(aDataModel);
             iAcceptor.addComponent(lHeatmap, "Heat map");
-            iAcceptor.addGraphable(lHeatmap);
+            iAcceptor.addSavable(lHeatmap);
         }
 
         // Add the conservation logo
         if (lFeeder.isUseConservationLogo()) {
-            ConservationComponent lCons = new ConservationComponent(aModel);
+            ConservationComponent lCons = new ConservationComponent(aDataModel);
             iAcceptor.addComponent(lCons, "Conservation line");
-            iAcceptor.addGraphable(lCons);
+            iAcceptor.addSavable(lCons);
         }
         iSamplingWizard.getContent().updateUI();
     }

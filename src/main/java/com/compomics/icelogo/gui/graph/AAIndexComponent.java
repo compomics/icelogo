@@ -10,7 +10,7 @@ import com.compomics.icelogo.core.enumeration.ExperimentTypeEnum;
 import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.apache.commons.math.stat.descriptive.DescriptiveStatistics;
@@ -36,7 +36,7 @@ import java.util.Vector;
 /**
  * This class creates a SVG document. It paint a graph with the values (mean, reference mean, confidence interval) for a specific Aa parameter matrix
  */
-public class AAIndexComponent extends JSVGCanvas implements Observer, Graphable {
+public class AAIndexComponent extends JSVGCanvas implements Observer, Savable {
     /*
     * The width of the panel where the SVG document will be created
     */
@@ -636,5 +636,18 @@ public class AAIndexComponent extends JSVGCanvas implements Observer, Graphable 
 
     public String getDescription() {
         return "Graph with the aa parameter";
+    }
+
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

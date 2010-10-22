@@ -6,7 +6,7 @@ import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.enumeration.IceLogoEnum;
 import com.compomics.icelogo.core.model.TwoSampleMatrixDataModel;
 import com.compomics.icelogo.gui.factory.ChartFactory;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.w3c.dom.svg.SVGDocument;
@@ -25,7 +25,7 @@ import java.util.Observer;
  * Created by IntelliJ IDEA. User: Kenny Date: 2-sep-2008 Time: 15:18:54 The 'SlidingBarChartPanel ' class was created
  * for
  */
-public class BarChartForm extends JPanel implements Observer, Graphable {
+public class BarChartForm extends JPanel implements Observer, Savable {
 // ------------------------------ FIELDS ------------------------------
 
     /**
@@ -233,6 +233,19 @@ public class BarChartForm extends JPanel implements Observer, Graphable {
 
     public String getDescription() {
         return "Barchart with aa occurence for position: " + sldPosition.getValue();
+    }
+
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public JFreeChart getChart() {

@@ -7,7 +7,7 @@ import com.compomics.icelogo.core.enumeration.ColorScheme;
 import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.enumeration.ScoringTypeEnum;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.DOMImplementation;
@@ -26,7 +26,7 @@ import java.util.Observer;
  * <p/>
  * This class
  */
-public class KLogoComponent extends JSVGCanvas implements Observer, Graphable {
+public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
     public int iLogoWidth;
     public int iLogoHeigth;
     public int iLogoElements;
@@ -451,5 +451,18 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Graphable {
 
     public String getDescription() {
         return "icelogo of positive and reference set";
+    }
+
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

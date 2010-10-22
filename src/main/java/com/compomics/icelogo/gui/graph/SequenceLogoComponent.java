@@ -9,7 +9,7 @@ import com.compomics.icelogo.core.enumeration.ScoringTypeEnum;
 import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.DOMImplementation;
@@ -31,7 +31,7 @@ import java.util.Observer;
  * This class can create a "weblogo". The weblogo can be constructed using a negative set correction.
  * More information can be found on the website:  http://weblogo.berkeley.edu/ .
  */
-public class SequenceLogoComponent extends JSVGCanvas implements Observer, Graphable {
+public class SequenceLogoComponent extends JSVGCanvas implements Observer, Savable {
     public int iLogoWidth;
     public int iLogoHeigth;
     public int iLogoElements;
@@ -362,5 +362,18 @@ public class SequenceLogoComponent extends JSVGCanvas implements Observer, Graph
 
     public String getDescription() {
         return "Sequence logo for positive set";
+    }
+
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -11,7 +11,7 @@ import com.compomics.icelogo.core.interfaces.MatrixDataModel;
 import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
 import com.compomics.icelogo.core.model.TwoSampleMatrixDataModel;
 import com.compomics.icelogo.core.stat.StatisticsConversion;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import com.compomics.icelogo.gui.interfaces.HeatMapDataSupplier;
 import com.compomics.icelogo.gui.renderer.DefaultHeatMapCellRenderer;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
@@ -33,7 +33,7 @@ import java.util.Observer;
  * This class can create a "weblogo". The weblogo can be constructed using a negative set correction.
  * More information can be found on the website:  http://weblogo.berkeley.edu/ .
  */
-public class HeatMapComponent extends JSVGCanvas implements Observer, Graphable {
+public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
 // ------------------------------ FIELDS ------------------------------
 
     public static int ONE_SAMPLE = 1;
@@ -420,7 +420,7 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Graphable 
         }
     }
 
-// --------------------- Interface Graphable ---------------------
+// --------------------- Interface Savable ---------------------
 
 
     public boolean isSvg() {
@@ -450,5 +450,18 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Graphable 
 
     public String getDescription() {
         return "Sequence logo for positive set";
+    }
+
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }
