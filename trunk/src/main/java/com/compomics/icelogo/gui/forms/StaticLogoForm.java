@@ -8,6 +8,7 @@ import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.enumeration.SamplingDirectionEnum;
 import com.compomics.icelogo.core.factory.AminoAcidStatisticsFactory;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
+import com.compomics.icelogo.core.io.MatrixDataModelSaver;
 import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
 import com.compomics.icelogo.gui.component.Messenger;
 import com.compomics.icelogo.gui.graph.*;
@@ -364,49 +365,60 @@ public class StaticLogoForm extends JPanel implements Observer {
                 if (iInfoFeeder.isUseIceLogo()) {
                     IceLogoComponent logo = new IceLogoComponent(dataModel, false);
                     iAcceptor.addComponent(logo, "iceLogo");
-                    iAcceptor.addGraphable(logo);
+                    iAcceptor.addSavable(logo);
+                }
+
+                // Add the saver for the datamodel.
+                MatrixDataModelSaver lMatrixDataModelSaver = new MatrixDataModelSaver(dataModel);
+                iAcceptor.addSavable(lMatrixDataModelSaver);
+
+                // Add the sequence logo
+                if (iInfoFeeder.isUseSequenceLogo()) {
+                    SequenceLogoComponent lSequenceLogo = new SequenceLogoComponent(dataModel);
+                    iAcceptor.addComponent(lSequenceLogo, "Sequence logo");
+                    iAcceptor.addSavable(lSequenceLogo);
                 }
 
                 //Add the barchart
                 if (iInfoFeeder.isUseBarchart()) {
                     BarChartForm lSliding = new BarChartForm(dataModel);
                     iAcceptor.addComponent(lSliding.$$$getRootComponent$$$(), "Bar chart");
-                    iAcceptor.addGraphable(lSliding);
+                    iAcceptor.addSavable(lSliding);
                 }
 
                 // Add the HeatMap
                 if (iInfoFeeder.isUseHeatmap()) {
                     HeatMapComponent lHeatmap = new HeatMapComponent(dataModel);
                     iAcceptor.addComponent(lHeatmap, "Heat map");
-                    iAcceptor.addGraphable(lHeatmap);
+                    iAcceptor.addSavable(lHeatmap);
                 }
 
                 // Add sublogo panel
                 if (iInfoFeeder.isUseSubLogo()) {
                     SubLogoForm subLogo = new SubLogoForm(iSwissProtMeans, positiveSet, dataModel);
                     iAcceptor.addComponent(subLogo.getMainPanel(), "subLogo");
-                    iAcceptor.addGraphable(subLogo);
+                    iAcceptor.addSavable(subLogo);
                 }
 
                 // Add the sequence logo
                 if (iInfoFeeder.isUseSequenceLogo()) {
                     SequenceLogoComponent lSequenceLogo = new SequenceLogoComponent(dataModel);
                     iAcceptor.addComponent(lSequenceLogo, "Sequence logo");
-                    iAcceptor.addGraphable(lSequenceLogo);
+                    iAcceptor.addSavable(lSequenceLogo);
                 }
 
                 // Add the AaParamterComponent
                 if (iInfoFeeder.isUseAaParameterGraph()) {
                     AAIndexComponent lAaParam = new AAIndexComponent(dataModel);
                     iAcceptor.addComponent(lAaParam, "Aa Parameter");
-                    iAcceptor.addGraphable(lAaParam);
+                    iAcceptor.addSavable(lAaParam);
                 }
 
                 // Add the conservation logo
                 if (iInfoFeeder.isUseConservationLogo()) {
                     ConservationComponent lCons = new ConservationComponent(dataModel);
                     iAcceptor.addComponent(lCons, "Conservation line");
-                    iAcceptor.addGraphable(lCons);
+                    iAcceptor.addSavable(lCons);
                 }
 
                 lParent.update(getGraphics());
@@ -544,49 +556,53 @@ public class StaticLogoForm extends JPanel implements Observer {
                 if (iInfoFeeder.isUseIceLogo()) {
                     IceLogoComponent logo = new IceLogoComponent(dataModel, false);
                     iAcceptor.addComponent(logo, "iceLogo");
-                    iAcceptor.addGraphable(logo);
+                    iAcceptor.addSavable(logo);
                 }
+
+                // Add the saver for the datamodel.
+                MatrixDataModelSaver lMatrixDataModelSaver = new MatrixDataModelSaver(dataModel);
+                iAcceptor.addSavable(lMatrixDataModelSaver);
 
                 //Add the barchart
                 if (iInfoFeeder.isUseBarchart()) {
                     BarChartForm lSliding = new BarChartForm(dataModel);
                     iAcceptor.addComponent(lSliding.$$$getRootComponent$$$(), "Bar chart");
-                    iAcceptor.addGraphable(lSliding);
+                    iAcceptor.addSavable(lSliding);
                 }
 
                 // Add the HeatMap
                 if (iInfoFeeder.isUseHeatmap()) {
                     HeatMapComponent lHeatmap = new HeatMapComponent(dataModel);
                     iAcceptor.addComponent(lHeatmap, "Heat map");
-                    iAcceptor.addGraphable(lHeatmap);
+                    iAcceptor.addSavable(lHeatmap);
                 }
 
                 // Add sublogo panel
                 if (iInfoFeeder.isUseSubLogo()) {
                     SubLogoForm subLogo = new SubLogoForm(iSwissProtMeans, positiveSet, dataModel);
                     iAcceptor.addComponent(subLogo.getMainPanel(), "subLogo");
-                    iAcceptor.addGraphable(subLogo);
+                    iAcceptor.addSavable(subLogo);
                 }
 
                 // Add the sequence logo
                 if (iInfoFeeder.isUseSequenceLogo()) {
                     SequenceLogoComponent lSequenceLogo = new SequenceLogoComponent(dataModel);
                     iAcceptor.addComponent(lSequenceLogo, "Sequence logo");
-                    iAcceptor.addGraphable(lSequenceLogo);
+                    iAcceptor.addSavable(lSequenceLogo);
                 }
 
                 // Add the AaParamterComponent
                 if (iInfoFeeder.isUseAaParameterGraph()) {
                     AAIndexComponent lAaParam = new AAIndexComponent(dataModel);
                     iAcceptor.addComponent(lAaParam, "Aa Parameter");
-                    iAcceptor.addGraphable(lAaParam);
+                    iAcceptor.addSavable(lAaParam);
                 }
 
                 // Add the conservation logo
                 if (iInfoFeeder.isUseConservationLogo()) {
                     ConservationComponent lCons = new ConservationComponent(dataModel);
                     iAcceptor.addComponent(lCons, "Conservation line");
-                    iAcceptor.addGraphable(lCons);
+                    iAcceptor.addSavable(lCons);
                 }
 
                 lParent.update(getGraphics());

@@ -295,6 +295,8 @@ public class ExperimentStep extends AbstractSamplingWizardStep {
                                 break;
                             } else if (s.length() > lFirstEntryLength) {
                                 JOptionPane.showMessageDialog(jpanContent, "Sequence Length for all entries must be equal!! (here: '" + lFirstEntrySequence + "' is not as long as '" + s + "')");
+                            } else if (s.length() == lFirstEntryLength) {
+                                lSequenceSet.add(s);
                             } else {
                                 // The last line can be in busy in modifiation. Do nothing.
                             }

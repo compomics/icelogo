@@ -5,7 +5,7 @@ import com.compomics.icelogo.core.enumeration.IceLogoEnum;
 import com.compomics.icelogo.gui.component.MessagePanel;
 import com.compomics.icelogo.gui.component.Messenger;
 import com.compomics.icelogo.gui.forms.wizard.SamplingWizard;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import com.compomics.icelogo.gui.interfaces.GraphableAcceptor;
 import com.compomics.icelogo.gui.interfaces.MessageAcceptor;
 import com.jgoodies.looks.FontPolicies;
@@ -71,7 +71,7 @@ public class IceLogo extends JFrame implements GraphableAcceptor {
     /**
      * Vector with savable panels
      */
-    private Vector<Graphable> iGraphableElements = new Vector<Graphable>();
+    private Vector<Savable> iSavableElements = new Vector<Savable>();
     /**
      * The main information feeder
      */
@@ -231,10 +231,10 @@ public class IceLogo extends JFrame implements GraphableAcceptor {
     /**
      * This method adds a savable pane
      *
-     * @param aGraphable A panel that can be saved
+     * @param aSavable A panel that can be saved
      */
-    public void addGraphable(Graphable aGraphable) {
-        iGraphableElements.add(aGraphable);
+    public void addSavable(Savable aSavable) {
+        iSavableElements.add(aSavable);
     }
 
     /**
@@ -312,7 +312,7 @@ public class IceLogo extends JFrame implements GraphableAcceptor {
                 JFrame saveFrame = new JFrame("Save");
                 saveFrame.setIconImage(new ImageIcon(ClassLoader.getSystemResource("icons/Save.png")).getImage());
                 //create JFrame parameters
-                GraphableSaverForm lSave = new GraphableSaverForm(iGraphableElements);
+                GraphableSaverForm lSave = new GraphableSaverForm(iSavableElements);
                 saveFrame.setContentPane(lSave.getContentPane());
                 saveFrame.setSize(600, 300);
                 saveFrame.setLocation(100, 100);
@@ -383,7 +383,7 @@ public class IceLogo extends JFrame implements GraphableAcceptor {
     }
 
     public void removeAllSavables() {
-        iGraphableElements.removeAllElements();
+        iSavableElements.removeAllElements();
     }
 
     private JComponent getIceLogoComponent() {

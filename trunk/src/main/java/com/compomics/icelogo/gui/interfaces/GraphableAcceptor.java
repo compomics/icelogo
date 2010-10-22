@@ -10,7 +10,7 @@ public interface GraphableAcceptor {
 
     public void addComponent(JComponent comp, String aTitle);
 
-    public void addGraphable(Graphable aGraphable);
+    public void addSavable(Savable aSavable);
 
     public void removeAll();
 

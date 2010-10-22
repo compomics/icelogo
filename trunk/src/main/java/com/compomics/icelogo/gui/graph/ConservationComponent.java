@@ -12,7 +12,7 @@ import java.util.Observer;
 import java.util.Vector;
 import java.util.Observable;
 
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
 import com.compomics.icelogo.core.data.MainInformationFeeder;
@@ -40,7 +40,7 @@ import javax.swing.*;
 /**
  * This class creates a SVG document. It paint a graph with the values (mean, reference mean, confidence interval) for the conservation of a certain position
  */
-public class ConservationComponent extends JSVGCanvas implements Observer, Graphable {
+public class ConservationComponent extends JSVGCanvas implements Observer, Savable {
 
 
     /*
@@ -694,5 +694,18 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Graph
 
     public String getDescription() {
         return "Graph with the conservation line";
+    }
+
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

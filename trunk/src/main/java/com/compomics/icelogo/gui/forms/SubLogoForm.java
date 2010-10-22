@@ -11,9 +11,10 @@ import com.compomics.icelogo.core.enumeration.ScoringTypeEnum;
 import com.compomics.icelogo.core.factory.AminoAcidStatisticsFactory;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
+import com.compomics.icelogo.core.io.MatrixDataModelSaver;
 import com.compomics.icelogo.core.model.OneSampleMatrixDataModel;
 import com.compomics.icelogo.gui.graph.IceLogoComponent;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import com.compomics.icelogo.gui.interfaces.GraphableAcceptor;
 import org.w3c.dom.svg.SVGDocument;
 
@@ -35,7 +36,7 @@ import java.util.Vector;
  * Created by IntelliJ IDEA. User: Niklaas Colaert Date: 10-okt-2008 Time: 19:02:43 To change this template use File |
  * Settings | File Templates.
  */
-public class SubLogoForm implements Observer, Graphable, GraphableAcceptor {
+public class SubLogoForm implements Observer, Savable, GraphableAcceptor {
     private JList list1;
     private JCheckBox useWholeSetAsCheckBox;
     private JCheckBox useSwissprotMeansCheckBox;
@@ -63,7 +64,7 @@ public class SubLogoForm implements Observer, Graphable, GraphableAcceptor {
     private int iStartPosition;
     private IceLogoComponent logoPanel;
     private MainInformationFeeder iInformationFeeder;
-    private Vector<Graphable> iGraphableElements = new Vector<Graphable>();
+    private Vector<Savable> iSavableElements = new Vector<Savable>();
 
 
     public SubLogoForm(Vector<SwissProtComposition> aSwissProtComposition, String[] aPosSet, MatrixDataModel aDataModel) {
@@ -114,7 +115,7 @@ public class SubLogoForm implements Observer, Graphable, GraphableAcceptor {
             public void actionPerformed(final ActionEvent e) {
                 JFrame saveFrame = new JFrame("Save");
                 //create JFrame parameters
-                GraphableSaverForm lSave = new GraphableSaverForm(iGraphableElements);
+                GraphableSaverForm lSave = new GraphableSaverForm(iSavableElements);
                 saveFrame.setContentPane(lSave.getContentPane());
                 saveFrame.setSize(600, 300);
                 saveFrame.setLocation(100, 100);
@@ -257,11 +258,16 @@ public class SubLogoForm implements Observer, Graphable, GraphableAcceptor {
         removeAllSavables();
         //add logo
         addComponent(logoPanel, "iceLogo");
-        addGraphable(logoPanel);
+        addSavable(logoPanel);
+
+        // Add the saver for the datamodel.
+        MatrixDataModelSaver lMatrixDataModelSaver = new MatrixDataModelSaver(dataModel);
+        addSavable(lMatrixDataModelSaver);
+
         //add the barchart
         BarChartForm lSliding = new BarChartForm(dataModel);
         addComponent(lSliding.$$$getRootComponent$$$(), "Bar chart");
-        addGraphable(lSliding);
+        addSavable(lSliding);
         //add selected peptides panel
         addComponent(selecteePeptidesPanel, "Selected peptides");
     }
@@ -319,17 +325,30 @@ public class SubLogoForm implements Observer, Graphable, GraphableAcceptor {
         return "subLogo ";
     }
 
+    /**
+     * Gives a boolean that indicates if the saveble is text.
+     *
+     * @return
+     */
+    public boolean isText() {
+        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getText() {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
 
     public void addComponent(final JComponent comp, final String aTitle) {
         tabPane.add(aTitle, comp);
     }
 
-    public void addGraphable(Graphable aGraphable) {
-        iGraphableElements.add(aGraphable);
+    public void addSavable(Savable aSavable) {
+        iSavableElements.add(aSavable);
     }
 
     public void removeAllSavables() {
-        iGraphableElements.removeAllElements();
+        iSavableElements.removeAllElements();
     }
 
     public void removeAll() {
@@ -596,13 +615,19 @@ public class SubLogoForm implements Observer, Graphable, GraphableAcceptor {
             //first remove everything
             removeAll();
             removeAllSavables();
+
+            // Add the saver for the datamodel.
+            MatrixDataModelSaver lMatrixDataModelSaver = new MatrixDataModelSaver(dataModel);
+            addSavable(lMatrixDataModelSaver);
+
             //add logo
             addComponent(logoPanel, "iceLogo");
-            addGraphable(logoPanel);
+            addSavable(logoPanel);
+
             //add the barchart
             BarChartForm lSliding = new BarChartForm(dataModel);
             addComponent(lSliding.$$$getRootComponent$$$(), "Bar chart");
-            addGraphable(lSliding);
+            addSavable(lSliding);
 
             //add selected peptides panel
             addComponent(selecteePeptidesPanel, "Selected peptides");

@@ -1,7 +1,7 @@
 package com.compomics.icelogo.gui.forms;
 
 import com.compomics.icelogo.core.data.MainInformationFeeder;
-import com.compomics.icelogo.gui.interfaces.Graphable;
+import com.compomics.icelogo.gui.interfaces.Savable;
 import com.compomics.util.sun.SwingWorker;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -17,8 +17,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.Vector;
 
 /**
@@ -34,13 +33,13 @@ public class GraphableSaverForm {
     private MainInformationFeeder iInfoFeeder = MainInformationFeeder.getInstance();
 
 
-    public GraphableSaverForm(Vector<Graphable> aGraphables) {
+    public GraphableSaverForm(Vector<Savable> aSavables) {
 
 
         savablePanel.setLayout(new BoxLayout(savablePanel, BoxLayout.Y_AXIS));
         savablePanel.add(Box.createVerticalStrut(5));
-        for (int i = 0; i < aGraphables.size(); i++) {
-            SavableLine lLine = new SavableLine(aGraphables.get(i));
+        for (int i = 0; i < aSavables.size(); i++) {
+            SavableLine lLine = new SavableLine(aSavables.get(i));
             lSavableLines.add(lLine);
             savablePanel.add(lLine.getContentPane());
             savablePanel.add(Box.createVerticalStrut(5));
@@ -61,13 +60,16 @@ public class GraphableSaverForm {
     public void save() {
 
         JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.showSaveDialog(new JFrame());
+
         String fileLocation = fc.getSelectedFile().getAbsolutePath();
-        if (!fileLocation.endsWith(".pdf")) {
-            //add .pdf
-            fileLocation = fileLocation + ".pdf";
+        if (fileLocation.indexOf(".") != -1) {
+            fileLocation = fileLocation.substring(0, fileLocation.indexOf("."));
         }
-        final String lfileLocation = fileLocation;
+        final String lPDFFileLocation = fileLocation + ".pdf";
+        final String lCSVFileLocation = fileLocation + ".csv";
+
         //create a new swing worker
         SwingWorker lPdfSaver = new SwingWorker() {
             public Boolean construct() {
@@ -75,7 +77,7 @@ public class GraphableSaverForm {
                     // step 1 create a document
                     Document document = new Document(new Rectangle(iInfoFeeder.getGraphableWidth(), iInfoFeeder.getGraphableHeight()));
                     // step 2 create a writer
-                    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(lfileLocation));
+                    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(lPDFFileLocation));
                     // step 3 open the document
                     document.open();
                     // step 4 create the PDFContenteByte
@@ -84,7 +86,8 @@ public class GraphableSaverForm {
 
                     for (int i = 0; i < lSavableLines.size(); i++) {
                         if (lSavableLines.get(i).isSelected()) {
-                            if (lSavableLines.get(i).getSavable().isSvg()) {
+                            Savable lSavable = lSavableLines.get(i).getSavable();
+                            if (lSavable.isSvg()) {
 
                                 //we will add an svg to the pd
                                 UserAgent userAgent = new UserAgentAdapter();
@@ -112,12 +115,26 @@ public class GraphableSaverForm {
                                 document.newPage();
 
                             } */
-                            else {
+                            else if (lSavable.isChart()) {
                                 //we will add a jpanel to the pdf
                                 g2 = cb.createGraphicsShapes(iInfoFeeder.getGraphableWidth(), iInfoFeeder.getGraphableHeight());
                                 lSavableLines.get(i).getSavable().getContentPanel().paintAll(g2);
                                 g2.dispose();
                                 document.newPage();
+
+                            } else if (lSavable.isText()) {
+
+                                File lFile = new File(lCSVFileLocation);
+                                if (lFile.exists() == false) {
+                                    lFile.createNewFile();
+                                }
+
+                                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(lFile)));
+                                String lContent = lSavable.getText();
+
+                                bw.write(lContent);
+                                bw.flush();
+                                bw.close();
                             }
                         }
                     }
@@ -129,6 +146,8 @@ public class GraphableSaverForm {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
                 // step 7.2 dispose the iText components.
                 return true;
@@ -152,8 +171,9 @@ public class GraphableSaverForm {
     }
 
     /**
-     * Method generated by IntelliJ IDEA GUI Designer >>> IMPORTANT!! <<< DO NOT edit this method OR call it in your
-     * code!
+     * Method generated by IntelliJ IDEA GUI Designer
+     * >>> IMPORTANT!! <<<
+     * DO NOT edit this method OR call it in your code!
      *
      * @noinspection ALL
      */
@@ -209,21 +229,21 @@ public class GraphableSaverForm {
     private class SavableLine {
         private JPanel jpanContent;
         private JCheckBox chbDescription;
-        private Graphable iGraphable;
+        private Savable iSavable;
 
 
-        public SavableLine(Graphable aGraphable) {
+        public SavableLine(Savable aSavable) {
             build();
-            this.iGraphable = aGraphable;
-            chbDescription.setText(aGraphable.getDescription());
+            this.iSavable = aSavable;
+            chbDescription.setText(aSavable.getDescription());
         }
 
         public JPanel getContentPane() {
             return jpanContent;
         }
 
-        public Graphable getSavable() {
-            return this.iGraphable;
+        public Savable getSavable() {
+            return this.iSavable;
         }
 
         public boolean isSelected() {
