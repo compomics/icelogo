@@ -79,8 +79,8 @@ public class FixedAminoAcidStatistics implements AminoAcidStatistics {
     /**
      * {@inheritDoc}
      */
-    public AminoAcidEnum[] getRandomPeptide(int aLenght) {
-        AminoAcidEnum[] lAas = new AminoAcidEnum[aLenght];
+    public AminoAcidEnum[] getRandomPeptide(int aLength) {
+        AminoAcidEnum[] lAas = new AminoAcidEnum[aLength];
 
         for (int i = 0; i < lAas.length; i++) {
 

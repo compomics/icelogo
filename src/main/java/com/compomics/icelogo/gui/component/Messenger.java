@@ -15,7 +15,7 @@ public class Messenger {
     private JProgressBar progress = new JProgressBar();
 
     private Messenger() {
-        // Disable th¡¡e progressbar by default.
+        // Disable the progressbar by default.
         setProgressIndeterminate(false);
     }
 

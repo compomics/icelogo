@@ -351,9 +351,12 @@ public class AminoAcidStatisticsFactory {
      * @return An array of AminoAcidMatrix instances starting from the given 'offset' for 'aLength' positions.
      */
     public static AminoAcidStatistics[] createFixedStatisticsVerticalPositionAminoAcidMatrix(ISequenceSet aSequenceSet, int aSamplingSize, int aOffset, final int aLength, int aSetSize) {
+
+        //sampling size and offset are useless as they are always 1 and 0 in every call of this method, keeping it because changing this will probably break something not related like a frame size or something stupid like that
+
         int[] lPositions = new int[aLength];
         for (int i = 0; i < aLength; i++) {
-            int lPosition = (int) aOffset + i;
+            int lPosition = aOffset + i;
             lPositions[i] = lPosition;
         }
 

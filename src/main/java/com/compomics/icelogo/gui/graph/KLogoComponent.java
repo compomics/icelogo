@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 import org.w3c.dom.svg.SVGDocument;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Observable;
@@ -28,10 +29,10 @@ import java.util.Observer;
  */
 public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
     public int iLogoWidth;
-    public int iLogoHeigth;
+    public int iLogoHeight;
     public int iLogoElements;
     public int iStartPosition;
-    public double iLogoYaxisHeigth;
+    public double iLogoYaxisHeight;
     public double iElementWidth;
 
     public ColorScheme iColorScheme;
@@ -77,7 +78,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
     public void getInfo() {
         this.iStartPosition = iMainInformationFeeder.getStartPosition();
         this.iZscore = iMainInformationFeeder.getZscore();
-        this.iLogoYaxisHeigth = iMainInformationFeeder.getYaxisValue();
+        this.iLogoYaxisHeight = iMainInformationFeeder.getYaxisValue();
         this.iScoringType = iMainInformationFeeder.getScoringType();
         this.iPvalue = iMainInformationFeeder.getPvalue();
     }
@@ -87,12 +88,13 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
 
         this.getInfo();
         iRegulatedPositions = iDataModel.getRegulatedPositions(iZscore);
+
         this.iColorScheme = iMainInformationFeeder.getColorScheme();
         if (isSubLogo) {
-            this.iLogoHeigth = iMainInformationFeeder.getSubLogoHeight();
+            this.iLogoHeight = iMainInformationFeeder.getSubLogoHeight();
             this.iLogoWidth = iMainInformationFeeder.getSubLogoWidth();
         } else {
-            this.iLogoHeigth = iMainInformationFeeder.getGraphableHeight();
+            this.iLogoHeight = iMainInformationFeeder.getGraphableHeight();
             this.iLogoWidth = iMainInformationFeeder.getGraphableWidth();
         }
         //calculate the width of every element
@@ -108,26 +110,26 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
 
         // set the width and height attribute on the svg root element
         svgRoot.setAttributeNS(null, "width", String.valueOf(iLogoWidth - 50));
-        svgRoot.setAttributeNS(null, "height", String.valueOf(iLogoHeigth));
+        svgRoot.setAttributeNS(null, "height", String.valueOf(iLogoHeight));
 
         //paint axis
         Element yAxis = doc.createElementNS(svgNS, "rect");
         yAxis.setAttributeNS(null, "x", "49");
         yAxis.setAttributeNS(null, "y", "50");
         yAxis.setAttributeNS(null, "width", "1");
-        yAxis.setAttributeNS(null, "height", String.valueOf(iLogoHeigth - 100));
+        yAxis.setAttributeNS(null, "height", String.valueOf(iLogoHeight - 100));
         yAxis.setAttributeNS(null, "style", "fill:black");
 
         Element xAxis1 = doc.createElementNS(svgNS, "rect");
         xAxis1.setAttributeNS(null, "x", "49");
-        xAxis1.setAttributeNS(null, "y", String.valueOf(iLogoHeigth / 2 - 9));
+        xAxis1.setAttributeNS(null, "y", String.valueOf(iLogoHeight / 2 - 9));
         xAxis1.setAttributeNS(null, "width", String.valueOf(iElementWidth * iLogoElements));
         xAxis1.setAttributeNS(null, "height", "1");
         xAxis1.setAttributeNS(null, "style", "fill:black");
 
         Element xAxis2 = doc.createElementNS(svgNS, "rect");
         xAxis2.setAttributeNS(null, "x", "49");
-        xAxis2.setAttributeNS(null, "y", String.valueOf(iLogoHeigth / 2 + 10));
+        xAxis2.setAttributeNS(null, "y", String.valueOf(iLogoHeight / 2 + 10));
         xAxis2.setAttributeNS(null, "width", String.valueOf(iElementWidth * iLogoElements));
         xAxis2.setAttributeNS(null, "height", "1");
         xAxis2.setAttributeNS(null, "style", "fill:black");
@@ -136,7 +138,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
         top.setAttributeNS(null, "d", "M  44.5,54 L 49.5,50 L 54.5,54");
         top.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
         Element bottom = doc.createElementNS(svgNS, "path");
-        bottom.setAttributeNS(null, "d", "M 44.5," + String.valueOf(iLogoHeigth - 54) + " L 49.5," + String.valueOf(iLogoHeigth - 50) + " L 54.5," + String.valueOf(iLogoHeigth - 54));
+        bottom.setAttributeNS(null, "d", "M 44.5," + String.valueOf(iLogoHeight - 54) + " L 49.5," + String.valueOf(iLogoHeight - 50) + " L 54.5," + String.valueOf(iLogoHeight - 54));
         bottom.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
         //axis markers
 
@@ -145,13 +147,13 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
         markerLine1.setAttributeNS(null, "d", "M  49,70 L 44,70 L 44,70");
         markerLine1.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
         Element markerLine2 = doc.createElementNS(svgNS, "path");
-        markerLine2.setAttributeNS(null, "d", "M  49," + String.valueOf(60 + (iLogoHeigth / 2 - 10 - 50) / 2) + " L 44," + String.valueOf(60 + (iLogoHeigth / 2 - 10 - 50) / 2) + "");
+        markerLine2.setAttributeNS(null, "d", "M  49," + String.valueOf(60 + (iLogoHeight / 2 - 10 - 50) / 2) + " L 44," + String.valueOf(60 + (iLogoHeight / 2 - 10 - 50) / 2) + "");
         markerLine2.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
         Element markerLine3 = doc.createElementNS(svgNS, "path");
-        markerLine3.setAttributeNS(null, "d", "M  49," + String.valueOf(iLogoHeigth - 70) + " L 44," + String.valueOf(iLogoHeigth - 70) + "");
+        markerLine3.setAttributeNS(null, "d", "M  49," + String.valueOf(iLogoHeight - 70) + " L 44," + String.valueOf(iLogoHeight - 70) + "");
         markerLine3.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
         Element markerLine4 = doc.createElementNS(svgNS, "path");
-        markerLine4.setAttributeNS(null, "d", "M  49," + String.valueOf(iLogoHeigth - 60 - (iLogoHeigth / 2 - 10 - 50) / 2) + " L 44," + String.valueOf(iLogoHeigth - 60 - (iLogoHeigth / 2 - 10 - 50) / 2) + "");
+        markerLine4.setAttributeNS(null, "d", "M  49," + String.valueOf(iLogoHeight - 60 - (iLogoHeight / 2 - 10 - 50) / 2) + " L 44," + String.valueOf(iLogoHeight - 60 - (iLogoHeight / 2 - 10 - 50) / 2) + "");
         markerLine4.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
 
         Element marker1 = doc.createElementNS(svgNS, "text");
@@ -159,34 +161,34 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
         marker1.setAttributeNS(null, "y", "70");
         marker1.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
         marker1.setAttributeNS(null, "text-anchor", "middle");
-        Text markerText1 = doc.createTextNode(String.valueOf(iLogoYaxisHeigth));
+        Text markerText1 = doc.createTextNode(String.valueOf(iLogoYaxisHeight));
         marker1.appendChild(markerText1);
         svgRoot.appendChild(marker1);
 
         Element marker2 = doc.createElementNS(svgNS, "text");
         marker2.setAttributeNS(null, "x", "20");
-        marker2.setAttributeNS(null, "y", String.valueOf(iLogoHeigth - 70));
+        marker2.setAttributeNS(null, "y", String.valueOf(iLogoHeight - 70));
         marker2.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
         marker2.setAttributeNS(null, "text-anchor", "middle");
-        Text markerText2 = doc.createTextNode(String.valueOf(iLogoYaxisHeigth * -1));
+        Text markerText2 = doc.createTextNode(String.valueOf(iLogoYaxisHeight * -1));
         marker2.appendChild(markerText2);
         svgRoot.appendChild(marker2);
 
         Element marker3 = doc.createElementNS(svgNS, "text");
         marker3.setAttributeNS(null, "x", "20");
-        marker3.setAttributeNS(null, "y", String.valueOf(60 + (iLogoHeigth / 2 - 10 - 50) / 2));
+        marker3.setAttributeNS(null, "y", String.valueOf(60 + (iLogoHeight / 2 - 10 - 50) / 2));
         marker3.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
         marker3.setAttributeNS(null, "text-anchor", "middle");
-        Text markerText3 = doc.createTextNode(String.valueOf(iLogoYaxisHeigth / 2));
+        Text markerText3 = doc.createTextNode(String.valueOf(iLogoYaxisHeight / 2));
         marker3.appendChild(markerText3);
         svgRoot.appendChild(marker3);
 
         Element marker4 = doc.createElementNS(svgNS, "text");
         marker4.setAttributeNS(null, "x", "20");
-        marker4.setAttributeNS(null, "y", String.valueOf(iLogoHeigth - 60 - (iLogoHeigth / 2 - 10 - 50) / 2));
+        marker4.setAttributeNS(null, "y", String.valueOf(iLogoHeight - 60 - (iLogoHeight / 2 - 10 - 50) / 2));
         marker4.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
         marker4.setAttributeNS(null, "text-anchor", "middle");
-        Text markerText4 = doc.createTextNode(String.valueOf((iLogoYaxisHeigth / 2) * -1));
+        Text markerText4 = doc.createTextNode(String.valueOf((iLogoYaxisHeight / 2) * -1));
         marker4.appendChild(markerText4);
         svgRoot.appendChild(marker4);
 
@@ -198,7 +200,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
 
             Element number = doc.createElementNS(svgNS, "text");
             number.setAttributeNS(null, "x", String.valueOf(50 + elementCount * iElementWidth + iElementWidth / 2));
-            number.setAttributeNS(null, "y", String.valueOf(iLogoHeigth / 2 + 6));
+            number.setAttributeNS(null, "y", String.valueOf(iLogoHeight / 2 + 6));
             number.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
             number.setAttributeNS(null, "text-anchor", "middle");
             Text numberText = doc.createTextNode(String.valueOf(s));
@@ -208,7 +210,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
 
             elementCount = elementCount + 1;
             Element line = doc.createElementNS(svgNS, "path");
-            line.setAttributeNS(null, "d", "M  " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeigth / 2 - 9) + " L " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeigth / 2 + 10));
+            line.setAttributeNS(null, "d", "M  " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeight / 2 - 9) + " L " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeight / 2 + 10));
             line.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
             svgRoot.appendChild(line);
         }
@@ -227,7 +229,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
 
         if (ScoringTypeEnum.FOLDCHANGE == iScoringType) {
             Element titleAxis1 = doc.createElementNS(svgNS, "text");
-            titleAxis1.setAttributeNS(null, "x", String.valueOf(iLogoHeigth / -2));
+            titleAxis1.setAttributeNS(null, "x", String.valueOf(iLogoHeight / -2));
             titleAxis1.setAttributeNS(null, "y", "15");
             titleAxis1.setAttributeNS(null, "transform", "matrix(0,-1,1,0,0,0)");
             titleAxis1.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
@@ -237,7 +239,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
             svgRoot.appendChild(titleAxis1);
 
             Element titleAxis2 = doc.createElementNS(svgNS, "text");
-            titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoHeigth / -2));
+            titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoHeight / -2));
             titleAxis2.setAttributeNS(null, "y", "35");
             titleAxis2.setAttributeNS(null, "transform", "matrix(0,-1,1,0,0,0)");
             titleAxis2.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
@@ -247,7 +249,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
             svgRoot.appendChild(titleAxis2);
         } else if (ScoringTypeEnum.PERCENTAGE == iScoringType) {
             Element titleAxis1 = doc.createElementNS(svgNS, "text");
-            titleAxis1.setAttributeNS(null, "x", String.valueOf(iLogoHeigth / -2));
+            titleAxis1.setAttributeNS(null, "x", String.valueOf(iLogoHeight / -2));
             titleAxis1.setAttributeNS(null, "y", "15");
             titleAxis1.setAttributeNS(null, "transform", "matrix(0,-1,1,0,0,0)");
             titleAxis1.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
@@ -257,7 +259,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
             svgRoot.appendChild(titleAxis1);
 
             Element titleAxis2 = doc.createElementNS(svgNS, "text");
-            titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoHeigth / -2));
+            titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoHeight / -2));
             titleAxis2.setAttributeNS(null, "y", "35");
             titleAxis2.setAttributeNS(null, "transform", "matrix(0,-1,1,0,0,0)");
             titleAxis2.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
@@ -267,7 +269,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
             svgRoot.appendChild(titleAxis2);
         } else if (ScoringTypeEnum.STANDARD_DEVIATION == iScoringType) {
             Element titleAxis1 = doc.createElementNS(svgNS, "text");
-            titleAxis1.setAttributeNS(null, "x", String.valueOf(iLogoHeigth / -2));
+            titleAxis1.setAttributeNS(null, "x", String.valueOf(iLogoHeight / -2));
             titleAxis1.setAttributeNS(null, "y", "15");
             titleAxis1.setAttributeNS(null, "transform", "matrix(0,-1,1,0,0,0)");
             titleAxis1.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
@@ -277,7 +279,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
             svgRoot.appendChild(titleAxis1);
 
             Element titleAxis2 = doc.createElementNS(svgNS, "text");
-            titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoHeigth / -2));
+            titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoHeight / -2));
             titleAxis2.setAttributeNS(null, "y", "35");
             titleAxis2.setAttributeNS(null, "transform", "matrix(0,-1,1,0,0,0)");
             titleAxis2.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
@@ -290,8 +292,8 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
         //paint positive sequence elements
         for (int p = 0; p < iRegulatedPositions.length; p++) {
             RegulatedPosition position = iRegulatedPositions[p];
-            RegulatedEntity[] posEntities = position.getPositveRegulatedEntity(iScoringType);
-            double elementStartY = iLogoHeigth / 2 - 10.0;
+            RegulatedEntity[] posEntities = position.getPositiveRegulatedEntity(iScoringType);
+            double elementStartY = iLogoHeight / 2 - 10.0;
             double elementStartX = 50.0 + p * iElementWidth;
 
             for (int e = 0; e < posEntities.length; e++) {
@@ -300,35 +302,33 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
                 //But the height and the color must be changed to cleary show this to the user
                 if (entity.getInfinite() && iScoringType == ScoringTypeEnum.FOLDCHANGE) {
                     if (e == 0) {
-                        entity.setChange(iScoringType, iLogoYaxisHeigth / 2);
+                        entity.setChange(iScoringType, iLogoYaxisHeight / 2);
                     } else {
                         entity.setChange(iScoringType, posEntities[e - 1].getChange(iScoringType) * 1.1);
                     }
-                } else {
-                    iColorScheme.setColor(entity);
                 }
                 //first check if the elements is at least 5% of the max
-                if (entity.getChange(iScoringType) >= iLogoYaxisHeigth / 40.0) {
-                    //calculate heigth of picture
+                if (entity.getChange(iScoringType) >= iLogoYaxisHeight / 40.0) {
+                    //calculate height of picture
                     double changeElement = entity.getChange(iScoringType);
-                    double pictureHeigth = (int) ((int) (iLogoHeigth / 2 - 90) * (changeElement / iLogoYaxisHeigth));
-                    int fontHeigth = (int) (pictureHeigth / 0.71582);
-                    //System.out.println(fontHeigth);
-                    double letterWidth = fontHeigth * 0.92041;
+                    double pictureHeight = (int) ((int) (iLogoHeight / 2 - 90) * (changeElement / iLogoYaxisHeight));
+                    int fontHeight = (int) (pictureHeight / 0.71582);
+                    //System.out.println(fontHeight);
+                    double letterWidth = fontHeight * 0.92041;
                     double calcFactor = iElementWidth / letterWidth;
-                    if (calcFactor > 0.0 && pictureHeigth > 5) {
+                    if (calcFactor > 0.0 && pictureHeight > 5) {
                         Element aa = doc.createElementNS(svgNS, "text");
                         if (entity.getInfinite()) {
                             aa.setAttributeNS(null, "x", String.valueOf(((elementStartX + iElementWidth / 2) / calcFactor)));
                             aa.setAttributeNS(null, "y", String.valueOf(elementStartY - 3));
                             aa.setAttributeNS(null, "transform", "scale(" + calcFactor + ",1.0)");
-                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeigth - 6) + "px;fill:pink;background-color:black;font-family:Arial");
+                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeight - 6) + "px;fill:pink;background-color:black;font-family:Arial");
                             aa.setAttributeNS(null, "text-anchor", "middle");
                         } else {
                             aa.setAttributeNS(null, "x", String.valueOf(((elementStartX + iElementWidth / 2) / calcFactor)));
                             aa.setAttributeNS(null, "y", String.valueOf(elementStartY - 3));
                             aa.setAttributeNS(null, "transform", "scale(" + calcFactor + ",1.0)");
-                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeigth - 6) + "px;;fill:" + entity.getColorName() + ";font-family:Arial");
+                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeight - 6) + "px;;fill:" + entity.getColorName() + ";font-family:Arial");
                             aa.setAttributeNS(null, "text-anchor", "middle");
                         }
 
@@ -336,7 +336,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
                         aa.appendChild(data);
                         svgRoot.appendChild(aa);
 
-                        elementStartY = elementStartY - pictureHeigth;
+                        elementStartY = elementStartY - pictureHeight;
 
                     }
                 }
@@ -347,7 +347,7 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
         for (int p = 0; p < iRegulatedPositions.length; p++) {
             RegulatedPosition position = iRegulatedPositions[p];
             RegulatedEntity[] negEntities = position.getNegativeRegulatedEntity(iScoringType);
-            double elementStartY = iLogoHeigth / 2 + 10.0;
+            double elementStartY = iLogoHeight / 2 + 10.0;
             double elementStartX = 50.0 + p * iElementWidth;
 
             for (int e = 0; e < negEntities.length; e++) {
@@ -356,38 +356,37 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
                 //But the height and the color must be changed to cleary show this to the user
                 if (entity.getInfinite() && iScoringType == ScoringTypeEnum.FOLDCHANGE) {
                     if (e == 0) {
-                        entity.setChange(iScoringType, -iLogoYaxisHeigth / negEntities.length);
+                        entity.setChange(iScoringType, -iLogoYaxisHeight / negEntities.length);
                     } else {
                         entity.setChange(iScoringType, negEntities[e - 1].getChange(iScoringType));
                     }
-                } else {
-                    iColorScheme.setColor(entity);
                 }
                 //first check if the elements is at least 5% of the max
-                if (entity.getChange(iScoringType) <= iLogoYaxisHeigth / -40.0) {
-                    //calculate heigth of picture
+                if (entity.getChange(iScoringType) <= iLogoYaxisHeight / -40.0) {
+                    //calculate height of picture
                     double changeElement = entity.getChange(iScoringType);
-                    double pictureHeigth = (int) ((int) (iLogoHeigth / 2 - 90) * (changeElement / iLogoYaxisHeigth));
-                    pictureHeigth = pictureHeigth * -1;
-                    int fontHeigth = (int) (pictureHeigth / 0.71582);
-                    //System.out.println(fontHeigth);
-                    double letterWidth = fontHeigth * 0.92041;
+                    double pictureHeight = (int) ((int) (iLogoHeight / 2 - 90) * (changeElement / iLogoYaxisHeight));
+                    pictureHeight = pictureHeight * -1;
+                    int fontHeight = (int) (pictureHeight / 0.71582);
+                    //System.out.println(fontHeight);
+                    double letterWidth = fontHeight * 0.92041;
                     double calcFactor = (double) iElementWidth / letterWidth;
-                    //The letter must have a minimum heigth
-                    if (calcFactor > 0.0 && pictureHeigth > 5) {
-                        elementStartY = elementStartY + pictureHeigth;
+                    //The letter must have a minimum height
+                    if (calcFactor > 0.0 && pictureHeight > 5) {
+                        elementStartY = elementStartY + pictureHeight;
                         Element aa = doc.createElementNS(svgNS, "text");
                         if (entity.getInfinite()) {
                             aa.setAttributeNS(null, "x", String.valueOf(((elementStartX + iElementWidth / 2) / calcFactor)));
                             aa.setAttributeNS(null, "y", String.valueOf(elementStartY));
                             aa.setAttributeNS(null, "transform", "scale(" + calcFactor + ",1.0)");
-                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeigth - 6) + "px;fill:pink;background-color:black;font-family:Arial");
+                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeight - 6) + "px;fill:pink;background-color:black;font-family:Arial");
                             aa.setAttributeNS(null, "text-anchor", "middle");
                         } else {
                             aa.setAttributeNS(null, "x", String.valueOf(((elementStartX + iElementWidth / 2) / calcFactor)));
                             aa.setAttributeNS(null, "y", String.valueOf(elementStartY));
                             aa.setAttributeNS(null, "transform", "scale(" + calcFactor + ",1.0)");
-                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeigth - 6) + "px;;fill:" + entity.getColorName() + ";font-family:Arial");
+                            Color color = iColorScheme.getAminoAcidColor(entity);
+                            aa.setAttributeNS(null, "style", "font-size:" + String.valueOf(fontHeight - 6) + "px;;fill:" + String.format("rgb(%d,%d,%d)", color.getRed(), color.getGreen(), color.getBlue())  + ";font-family:Arial");
                             aa.setAttributeNS(null, "text-anchor", "middle");
                         }
 
@@ -404,26 +403,26 @@ public class KLogoComponent extends JSVGCanvas implements Observer, Savable {
 
 
     public void zoomIn() {
-        iLogoYaxisHeigth = Math.round(iLogoYaxisHeigth * 0.5 * 100) / 100;
-        if (iLogoYaxisHeigth == 0.0) {
-            iLogoYaxisHeigth = 1.0;
+        iLogoYaxisHeight = Math.round(iLogoYaxisHeight * 0.5 * 100) / 100;
+        if (iLogoYaxisHeight == 0.0) {
+            iLogoYaxisHeight = 1.0;
         }
-        iMainInformationFeeder.setYaxisValue((int) iLogoYaxisHeigth);
+        iMainInformationFeeder.setYaxisValue((int) iLogoYaxisHeight);
         this.makeSVG();
     }
 
     public void zoomOut() {
-        iLogoYaxisHeigth = Math.round(iLogoYaxisHeigth * 1.5 * 100) / 100;
-        if (iLogoYaxisHeigth == 1.0) {
-            iLogoYaxisHeigth = 2.0;
+        iLogoYaxisHeight = Math.round(iLogoYaxisHeight * 1.5 * 100) / 100;
+        if (iLogoYaxisHeight == 1.0) {
+            iLogoYaxisHeight = 2.0;
         }
-        iMainInformationFeeder.setYaxisValue((int) iLogoYaxisHeigth);
+        iMainInformationFeeder.setYaxisValue((int) iLogoYaxisHeight);
         this.makeSVG();
     }
 
     public void update(Observable o, Object arg) {
         if (arg != null && (arg.equals(ObservableEnum.NOTIFY_STATISTICAL) || arg.equals(ObservableEnum.NOTIFY_Y_AXIS) || arg.equals(ObservableEnum.NOTIFY_SCORING_TYPE) || arg.equals(ObservableEnum.NOTIFY_COLOR_SCHEME) || arg.equals(ObservableEnum.NOTIFY_GRAPHABLE_FRAME_SIZE) || arg.equals(ObservableEnum.NOTIFY_START_POSITION))) {
-            if (arg.equals(ObservableEnum.NOTIFY_Y_AXIS) && iLogoYaxisHeigth != iMainInformationFeeder.getYaxisValue()) {
+            if (arg.equals(ObservableEnum.NOTIFY_Y_AXIS) && iLogoYaxisHeight != iMainInformationFeeder.getYaxisValue()) {
                 this.makeSVG();
             } else if (!arg.equals(ObservableEnum.NOTIFY_Y_AXIS)) {
                 this.makeSVG();

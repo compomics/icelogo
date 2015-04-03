@@ -4,6 +4,7 @@ import com.compomics.icelogo.core.interfaces.ISequenceSet;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * This class represents a raw set of sequences as a SequenceSet.
@@ -100,6 +101,10 @@ public class RawSequenceSet implements ISequenceSet {
      */
     public void add(String aEntry) {
         iRawSequences.add(aEntry);
+    }
+
+    public void addAll(List<String> entries){
+        iRawSequences.addAll(entries);
     }
 
     /**

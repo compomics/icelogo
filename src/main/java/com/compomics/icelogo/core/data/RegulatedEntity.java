@@ -4,6 +4,8 @@ import com.compomics.icelogo.core.enumeration.AminoAcidEnum;
 import com.compomics.icelogo.core.enumeration.ColorEnum;
 import com.compomics.icelogo.core.enumeration.ScoringTypeEnum;
 
+import java.awt.*;
+
 /**
  * Created by IntelliJ IDEA. User: Niklaas Colaert Date: 8-aug-2008 Time: 10:16:45 To change this template use File |
  * Settings | File Templates.
@@ -34,7 +36,7 @@ public class RegulatedEntity implements Comparable {
     /**
      * The color of this AminoAcid/RegulatedEntity
      */
-    public ColorEnum iColor = ColorEnum.BLACK;
+    public Color iColor = Color.BLACK;
     /**
      * Is the infinite (if one of the values to calculate the foldchange with is zero)
      */
@@ -76,7 +78,7 @@ public class RegulatedEntity implements Comparable {
      *
      * @return ColorEnum
      */
-    public ColorEnum getColorName() {
+    public Color getColorName() {
         return iColor;
     }
 
@@ -87,6 +89,10 @@ public class RegulatedEntity implements Comparable {
      */
     public char getAminoAcid() {
         return iAminoAcid.getOneLetterCode();
+    }
+
+    public AminoAcidEnum getAminoAcidEntity(){
+        return iAminoAcid;
     }
 
     /**
@@ -103,7 +109,7 @@ public class RegulatedEntity implements Comparable {
      *
      * @param aColor The color to set
      */
-    public void setColor(ColorEnum aColor) {
+    public void setColor(Color aColor) {
         this.iColor = aColor;
     }
 

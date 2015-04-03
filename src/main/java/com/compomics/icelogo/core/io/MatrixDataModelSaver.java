@@ -59,7 +59,7 @@ public class MatrixDataModelSaver implements Savable {
             // Each entry in this array is a Position (equals the experimental peptide length)
             RegulatedPosition lRegulatedPosition = lAllPositions[i1];
             // Fold change for positions.
-            RegulatedEntity[] lRegulatedEntities = lRegulatedPosition.getPositveRegulatedEntity(ScoringTypeEnum.FOLDCHANGE);
+            RegulatedEntity[] lRegulatedEntities = lRegulatedPosition.getPositiveRegulatedEntity(ScoringTypeEnum.FOLDCHANGE);
             HashMap lRegulatedEntitiesMap = new HashMap();
 
             for (RegulatedEntity lRegulatedEntity : lRegulatedEntities) {
@@ -78,7 +78,7 @@ public class MatrixDataModelSaver implements Savable {
             // Each entry in this array is a Position (equals the experimental peptide length)
             RegulatedPosition lRegulatedPosition = lAllPositions[i1];
             // Fold change for positions.
-            RegulatedEntity[] lRegulatedEntities = lRegulatedPosition.getPositveRegulatedEntity(ScoringTypeEnum.STANDARD_DEVIATION);
+            RegulatedEntity[] lRegulatedEntities = lRegulatedPosition.getPositiveRegulatedEntity(ScoringTypeEnum.STANDARD_DEVIATION);
             HashMap lRegulatedEntitiesMap = new HashMap();
 
             for (RegulatedEntity lRegulatedEntity : lRegulatedEntities) {
@@ -97,7 +97,7 @@ public class MatrixDataModelSaver implements Savable {
             // Each entry in this array is a Position (equals the experimental peptide length)
             RegulatedPosition lRegulatedPosition = lAllPositions[i1];
             // Fold change for positions.
-            RegulatedEntity[] lRegulatedEntities = lRegulatedPosition.getPositveRegulatedEntity(ScoringTypeEnum.FREQUENCY);
+            RegulatedEntity[] lRegulatedEntities = lRegulatedPosition.getPositiveRegulatedEntity(ScoringTypeEnum.FREQUENCY);
             HashMap lRegulatedEntitiesMap = new HashMap();
 
             for (RegulatedEntity lRegulatedEntity : lRegulatedEntities) {

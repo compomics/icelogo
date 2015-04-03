@@ -41,10 +41,9 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
 
 
     public int iHeatMapWidth;
-    public int iHeatMapHeigth;
+    public int iHeatMapHeight;
     public int iNumberOfPositions;
     public int iStartPosition;
-    public double iHeatMapYaxisHeigth;
     private int iElementHeight;
     public double iElementWidth;
 
@@ -54,7 +53,7 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
     public MatrixDataModel iMatrixDataModel;
     public double iStandardDeviation;
     public double iPvalue;
-    public MainInformationFeeder iFeeder;
+    public MainInformationFeeder iMainInformationFeeder;
     public boolean iNegativeSetCorrection = true;
     private HeatMapDataSupplier iHeatMapDataSupplier;
     private DefaultHeatMapCellRenderer iRenderer;
@@ -68,20 +67,20 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
      */
     public HeatMapComponent(MatrixDataModel aDataModel) {
         this.iNumberOfPositions = aDataModel.getNumberOfPositions();
-        this.iFeeder = MainInformationFeeder.getInstance();
+        this.iMainInformationFeeder = MainInformationFeeder.getInstance();
         this.iMatrixDataModel = aDataModel;
 
         initHeatMapDataSupplier();
         getInfo();
 
-        iFeeder.addObserver(iRenderer);
-        iFeeder.addObserver(this);
+        iMainInformationFeeder.addObserver(iRenderer);
+        iMainInformationFeeder.addObserver(this);
 
         this.makeSVG();
     }
 
     private void initHeatMapDataSupplier() {
-        // If the incomming MatrixDataModel is from the one sample type, create a OneSample - Adapter
+        // If the incoming MatrixDataModel is from the one sample type, create a OneSample - Adapter
         if (getMatrixDataModelType() == this.ONE_SAMPLE) {
             iHeatMapDataSupplier = new OneSampleHeatmapAdapter((OneSampleMatrixDataModel) iMatrixDataModel);
             // Else create a TwoSample - Adapter
@@ -112,11 +111,11 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
      * This method get all the necessary information from the MainInformationFeeder Singleton.
      */
     public void getInfo() {
-        this.iStartPosition = iFeeder.getStartPosition();
-        this.iStandardDeviation = iFeeder.getZscore();
+        this.iStartPosition = iMainInformationFeeder.getStartPosition();
+        this.iStandardDeviation = iMainInformationFeeder.getZscore();
         this.iScoringType = ScoringTypeEnum.FREQUENCY;
-        this.iPvalue = iFeeder.getPvalue();
-        this.iNegativeSetCorrection = iFeeder.isWeblogoNegativeCorrection();
+        this.iPvalue = iMainInformationFeeder.getPvalue();
+        this.iNegativeSetCorrection = iMainInformationFeeder.isWeblogoNegativeCorrection();
     }
 
     /**
@@ -124,12 +123,12 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
      */
     public void makeSVG() {
         this.getInfo();
-        this.iScheme = iFeeder.getColorScheme();
-        this.iHeatMapHeigth = iFeeder.getGraphableHeight();
-        this.iHeatMapWidth = iFeeder.getGraphableWidth();
+        this.iScheme = iMainInformationFeeder.getColorScheme();
+        this.iHeatMapHeight = iMainInformationFeeder.getGraphableHeight();
+        this.iHeatMapWidth = iMainInformationFeeder.getGraphableWidth();
 
         //calculate the width of every element
-        iElementHeight = (iHeatMapHeigth - 100) / AminoAcidEnum.values().length;
+        iElementHeight = (iHeatMapHeight - 100) / AminoAcidEnum.values().length;
         iElementWidth = 30;
 
         DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
@@ -144,7 +143,7 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
 
         // set the width and height attribute on the svg root element
         svgRoot.setAttributeNS(null, "width", String.valueOf(lDoubleWidth + 100));
-        svgRoot.setAttributeNS(null, "height", String.valueOf(iHeatMapHeigth));
+        svgRoot.setAttributeNS(null, "height", String.valueOf(iHeatMapHeight));
 
         //paint axis
         Element lInnerYaxis = doc.createElementNS(svgNS, "rect");
@@ -209,13 +208,13 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
         // Paint amino acids. (along the y-axis)
         int lRowCounter = 0;
         AminoAcidEnum[] aa = iHeatMapDataSupplier.getRows();
-        for (int i = 0; i < aa.length; i++) {
+        for (AminoAcidEnum anAa : aa) {
             Element number = doc.createElementNS(svgNS, "text");
             number.setAttributeNS(null, "x", String.valueOf(35));
             number.setAttributeNS(null, "y", String.valueOf(57 + lRowCounter * iElementHeight + iElementHeight / 2));
             number.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
             number.setAttributeNS(null, "text-anchor", "middle");
-            Text numberText = doc.createTextNode(String.valueOf(aa[i].getOneLetterCode()));
+            Text numberText = doc.createTextNode(String.valueOf(anAa.getOneLetterCode()));
             number.appendChild(numberText);
             svgRoot.appendChild(number);
 
@@ -238,7 +237,7 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
 
 
         // Make the gradient half the height of the heatmap.
-        int lNumberOfLines = iHeatMapHeigth / 2;
+        int lNumberOfLines = iHeatMapHeight / 2;
         // Constant X coordinates.
         int lLegendXStart = 30 + (new Double(iNumberOfPositions * iElementWidth)).intValue() + 50;
         int lLegendXEnd = new Double(lLegendXStart + iElementWidth).intValue();
@@ -265,7 +264,7 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
         double lFactorUnit = ((iRenderer.getPositiveColorEnd() + 1) * 2) / lNumberOfLines;
 
         // Variables to run along the Y-axis.
-        int lYRunner = iHeatMapHeigth / 4;
+        int lYRunner = iHeatMapHeight / 4;
         double lFactorRunner = iRenderer.getNegativeColorEnd() - 1; // Start with the negative upper boundary.
 
         boolean lInnerPositiveTickSet = false;
@@ -361,7 +360,7 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
         /*/ Draw a title for the legend.
         Element number = doc.createElementNS(svgNS, "text");
         number.setAttributeNS(null, "x", String.valueOf(lLegendXEnd - (iElementWidth / 2)));
-        number.setAttributeNS(null, "y", String.valueOf((iHeatMapHeigth / 4) - 10));
+        number.setAttributeNS(null, "y", String.valueOf((iHeatMapHeight / 4) - 10));
         number.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
         number.setAttributeNS(null, "text-anchor", "middle");
 
@@ -371,15 +370,12 @@ public class HeatMapComponent extends JSVGCanvas implements Observer, Savable {
         */
 
         // Paint the values
-        lRowCounter = 0;
-        lColumnCounter = 0;
         String lXOffset;
         String lYOffset;
 
 
         // First dimension loops over the amino acids - along the y-axis
         for (lRowCounter = 0; lRowCounter < aa.length; lRowCounter++) {
-            AminoAcidEnum lAminoAcidEnum = aa[lRowCounter];
             lYOffset = String.valueOf(53 + (lRowCounter) * iElementHeight);
 
             // Second dimension loops over the positions - along the x-axis

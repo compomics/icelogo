@@ -66,15 +66,15 @@ public class TestMatrixDataModelAdapter extends TestCaseLM {
         AminoAcidEnum[] lAminoAcidEnums = AminoAcidEnum.OTHER.valuesByPhysicoChemicalProperties();
 
         // Phe (row 15) at pos '1'
-        o = iHeatmapAdapter.getValueAt(15, 0);
+        o = iHeatmapAdapter.getValueAt(16, 0);
         Assert.assertEquals(0.1226390584033864, o);
 
         // Phe (row 15) at pos '2'
-        o = iHeatmapAdapter.getValueAt(15, 1);
+        o = iHeatmapAdapter.getValueAt(16, 1);
         Assert.assertEquals(0.7807109869595001, o);
 
         // Met (row 6) at pos '1'
-        o = iHeatmapAdapter.getValueAt(6, 0);
+        o = iHeatmapAdapter.getValueAt(14, 0);
         Assert.assertEquals(0.9977867370710402, o);
 
         // Ala (row 1) at pos '2'

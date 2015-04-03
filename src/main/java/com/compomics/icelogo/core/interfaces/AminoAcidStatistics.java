@@ -34,10 +34,10 @@ public interface AminoAcidStatistics {
     public double getCallBit();
 
     /**
-     * This method will create a random (based on this AminoAcidStatistics) array of AminoAcidEnum  with a given lenght
+     * This method will create a random (based on this AminoAcidStatistics) array of AminoAcidEnum  with a given length
      *
-     * @param aLenght The lenght of the array
+     * @param aLength The length of the array
      * @return AminoAcidEnum[] Array with random AminoAcids
      */
-    public AminoAcidEnum[] getRandomPeptide(int aLenght);
+    public AminoAcidEnum[] getRandomPeptide(int aLength);
 }

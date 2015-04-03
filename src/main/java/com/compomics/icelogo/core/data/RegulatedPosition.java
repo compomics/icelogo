@@ -58,7 +58,7 @@ public class RegulatedPosition {
      * @param aScoreType ScoringTypeEnum
      * @return RegulatedEntity[]
      */
-    public RegulatedEntity[] getPositveRegulatedEntity(ScoringTypeEnum aScoreType) {
+    public RegulatedEntity[] getPositiveRegulatedEntity(ScoringTypeEnum aScoreType) {
         RegulatedEntity[] entities = new RegulatedEntity[iPositveRegulatedEntity.size()];
         for (int e = 0; e < iPositveRegulatedEntity.size(); e++) {
             ((RegulatedEntity) iPositveRegulatedEntity.get(e)).setScoreType(aScoreType);

@@ -42,10 +42,6 @@ public class MainInformationFeeder extends Observable {
      */
     private static MainInformationFeeder ourInstance = new MainInformationFeeder();
     /**
-     * The color for every amino acid is stored in this color scheme
-     */
-    private ColorScheme iColorScheme = new ColorScheme();
-    /**
      * The height of the logo
      */
     private int iGraphableHeight = 400;
@@ -219,6 +215,7 @@ public class MainInformationFeeder extends Observable {
     private int iPositionSampleSize = 30;
     private boolean boolTwoExperiment = false;
     private int iHeatMapMagnitude = 2;
+    private ColorScheme iColorScheme;
 
 
 // -------------------------- STATIC METHODS --------------------------

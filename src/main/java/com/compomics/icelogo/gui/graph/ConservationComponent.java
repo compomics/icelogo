@@ -50,7 +50,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
     /*
     * The height of the panel where the SVG document will be created
     */
-    public int iLogoHeigth;
+    public int iLogoHeight;
     /**
      * The number of elements
      */
@@ -86,11 +86,11 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
     /**
      * The maximum value that can be displayed on the graph
      */
-    private double iMax = -99999999999.0;
+    private double iMax = Double.MIN_VALUE;
     /**
      * The minimum value that can be displayed on the graph
      */
-    private double iMin = 99999999999.0;
+    private double iMin = Double.MAX_VALUE;
     /**
      * indicates if this panel is updating
      */
@@ -141,7 +141,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
         //get the substitution matrix
         this.iMatrix = iInformationFeeder.getSubstitutionMatrix();
         this.iNormalizedLine = iInformationFeeder.isConservationLineNormalized();
-        this.iLogoHeigth = iInformationFeeder.getGraphableHeight();
+        this.iLogoHeight = iInformationFeeder.getGraphableHeight();
         this.iLogoWidth = iInformationFeeder.getGraphableWidth();
     }
 
@@ -150,9 +150,6 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
      * The results are stored in the iAaParameterResults vector.
      */
     public void calculate() {
-        //set the maximum and minimum
-        iMax = -99999999999.0;
-        iMin = 99999999999.0;
         //clear the results vector
         iSubstitutionResults.removeAllElements();
 
@@ -161,7 +158,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             //get the Positive AminoAcidStatistics
             AminoAcidStatistics lExperimentalMatrix = iDataModel.getExperimentalAminoAcidStatistics(p, ExperimentTypeEnum.EXPERIMENT);
             AminoAcidStatistics lTwoExperimentalMatrix = iDataModel.getExperimentalAminoAcidStatistics(p, ExperimentTypeEnum.EXPERIMENT_TWO);
-            if(lTwoExperimentalMatrix != null){
+            if (lTwoExperimentalMatrix != null) {
                 lUseTwoSets = true;
             }
             //get the Reference AminoAcidStatistics
@@ -170,12 +167,12 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             //Get the number of aminoacids used for that position
             int lPosSetSize = (int) lExperimentalMatrix.getStatistics(AminoAcidEnum.ALA).getN();
             int lTwoPosSetSize = 0;
-            if(lUseTwoSets){
+            if (lUseTwoSets) {
                 lTwoPosSetSize = (int) lTwoExperimentalMatrix.getStatistics(AminoAcidEnum.ALA).getN();
             }
             int lRefSetSize = (int) lReferenceMatrix.getStatistics(AminoAcidEnum.ALA).getN();
             //Always use the smallest set to do your statistics on
-            int lN = 0;
+            int lN;
             if (lPosSetSize > lRefSetSize) {
                 //the reference set is the smallest set
                 lN = lRefSetSize;
@@ -183,33 +180,33 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //the positive set is the smallest set
                 lN = lPosSetSize;
             }
-            if(lUseTwoSets && lN > lTwoPosSetSize){
+            if (lUseTwoSets && lN > lTwoPosSetSize) {
                 lN = lTwoPosSetSize;
             }
 
             //calculate a mean for the reference set and the positive set
-            double lPositionMean = getConservation(lExperimentalMatrix);
-            double lReferenceMean = 0.0;
+            double lPositionMean = getConservationStatistics(lExperimentalMatrix).getMean();
+            double lReferenceMean;
             double lTwoPositionMean = 0.0;
-            if(lUseTwoSets){
-                lTwoPositionMean = getConservation(lTwoExperimentalMatrix);
+            if (lUseTwoSets) {
+                lTwoPositionMean = getConservationStatistics(lTwoExperimentalMatrix).getMean();
             }
 
             //we should calculate the mean on different samples from the dataset
             //if it's a FixedAminoAcidStatistics there is only one dimension
-            //so we have the create 100 random peptides with the lenght the number of aminoacids in the set
+            //so we have the create 100 random peptides with the length the number of aminoacids in the set
             //this DescriptiveStatistics will store the different means
             DescriptiveStatistics lReferenceMeans = new DescriptiveStatistics();
             if (lReferenceMatrix.getDimension() == 1) {
                 for (int i = 0; i < 100; i++) {
                     AminoAcidEnum[] lAas = lReferenceMatrix.getRandomPeptide(lN);
                     RawSequenceSet lRawNegativeSequenceSet = new RawSequenceSet("Reference sequences");
-                    for (int j = 0; j < lAas.length; j++) {
-                        lRawNegativeSequenceSet.add(String.valueOf(lAas[j].getOneLetterCode()));
+                    for (AminoAcidEnum lAa : lAas) {
+                        lRawNegativeSequenceSet.add(String.valueOf(lAa.getOneLetterCode()));
                     }
                     AminoAcidStatistics[] lReferenceStatistics = AminoAcidStatisticsFactory.createFixedStatisticsVerticalPositionAminoAcidMatrix(lRawNegativeSequenceSet, 1, 0, 1, lN);
                     //add the mean to the collection of means
-                    lReferenceMeans.addValue(getConservation(lReferenceStatistics[0]));
+                    lReferenceMeans.addValue(getConservationStatistics(lReferenceStatistics[0]).getMean());
                 }
             } else {
                 MatrixAminoAcidStatistics lReferenceMatrixStatistics = (MatrixAminoAcidStatistics) lReferenceMatrix;
@@ -246,7 +243,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             }
             //create the AAIndexParameterResult
             AAIndexParameterResult lResult = new AAIndexParameterResult(lPositionMean, lReferenceMean, lStandardDeviation, p);
-            if(lUseTwoSets){
+            if (lUseTwoSets) {
                 lResult.setCalulatedMeanSetTwo(lTwoPositionMean);
             }
             //Check if the max and min are still correct
@@ -268,47 +265,41 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
     }
 
 
-    public double getSubstitutionScore(Vector<AAIndexSubstitution> lAaSubstitutions, AminoAcidEnum lAA){
+    public double getSubstitutionScore(Vector<AAIndexSubstitution> lAaSubstitutions, AminoAcidEnum lAA) {
         double lResult = 0.0;
 
-        for(int i = 0; i<lAaSubstitutions.size(); i ++){
-            if(lAaSubstitutions.get(i).getTarget() == lAA){
-                lResult = lAaSubstitutions.get(i).getSubstiturionValue();
+        for (AAIndexSubstitution lAaSubstitution : lAaSubstitutions) {
+            if (lAaSubstitution.getTarget() == lAA) {
+                lResult = lAaSubstitution.getSubstitutionValue();
             }
         }
         return lResult;
     }
 
-    public double getConservation(AminoAcidStatistics lStatistics){
-        double lResult = getConservationStatistics(lStatistics).getMean();
-        return lResult;
-    }
 
-
-    public double getConservationForCounter(AminoAcidCounter lCounter){
-        double lResult = 0.0;
+    public double getConservationForCounter(AminoAcidCounter lCounter) {
+        double lResult;
         DescriptiveStatistics lCalStat = new DescriptiveStatistics();
-        double lTotalCount = lCounter.getTotalCount();
         for (AminoAcidEnum lAminoAcid1 : AminoAcidEnum.values()) {
             double lCountAa1 = lCounter.getCount(lAminoAcid1);
-            if(lAminoAcid1 != AminoAcidEnum.OTHER){
+            if (lAminoAcid1 != AminoAcidEnum.OTHER) {
 
                 Vector<AAIndexSubstitution> lAaSubstitutions = (Vector<AAIndexSubstitution>) iMatrix.getValueForAminoAcid(lAminoAcid1);
 
                 int lAddCounter = 0;
 
-                if(lCountAa1>0.0){
+                if (lCountAa1 > 0.0) {
                     double lMutationScore1 = getSubstitutionScore(lAaSubstitutions, lAminoAcid1);
                     double lCalculation = 0.0;
 
                     //do the mutation calculations
                     for (AminoAcidEnum lAminoAcid2 : AminoAcidEnum.values()) {
 
-                        if(lAminoAcid1 == lAminoAcid2){
+                        if (lAminoAcid1 == lAminoAcid2) {
                             //the amino acid is the same, so the mutation cost 1.0
                             //we will add this cost lCountAa1 - 1 times
                             //lCalculation = lCalculation + (lCountAa1 - 1.0) * lMutationScore1;
-                            if(iNormalizedLine){
+                            if (iNormalizedLine) {
                                 lCalculation = lCalculation + (lCountAa1 - 1.0);
                             } else {
                                 lCalculation = lCalculation + (lCountAa1 - 1.0) * lMutationScore1;
@@ -317,11 +308,11 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                         } else {
                             //get the count for aa2
                             double lCountAa2 = lCounter.getCount(lAminoAcid2);
-                            if(lCountAa2>0.0){
+                            if (lCountAa2 > 0.0) {
                                 double lMutationScore2 = getSubstitutionScore(lAaSubstitutions, lAminoAcid2);
                                 //calculate the mutation score
                                 double lCalMutationScore;
-                                if(iNormalizedLine){
+                                if (iNormalizedLine) {
                                     lCalMutationScore = lMutationScore2 / lMutationScore1;
                                 } else {
                                     lCalMutationScore = lMutationScore2;
@@ -335,11 +326,11 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
                     //System.out.println(lAddCounter);
                     lCalculation = lCalculation / (lAddCounter);
-                    if(lCalculation== Double.NaN){
+                    if (lCalculation == Double.NaN) {
                         System.out.println("-");
                     } else {
                         //we will add the calculated mutation score for lAminoAcid1 lCountAa1 times becuase it is lCountAa1 times the same
-                        for(int j = 0; j<lCountAa1 ;j ++){
+                        for (int j = 0; j < lCountAa1; j++) {
                             lCalStat.addValue(lCalculation);
                         }
                     }
@@ -351,28 +342,28 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
         return lResult;
     }
 
-    public DescriptiveStatistics getConservationStatistics(AminoAcidStatistics lStatistics){
+    public DescriptiveStatistics getConservationStatistics(AminoAcidStatistics lStatistics) {
         DescriptiveStatistics lCalStat = new DescriptiveStatistics();
         double lTotalCount = lStatistics.getStatistics(AminoAcidEnum.ALA).getN();
         for (AminoAcidEnum lAminoAcid1 : AminoAcidEnum.values()) {
             double lCountAa1 = lTotalCount * lStatistics.getStatistics(lAminoAcid1).getMean();
-            if(lAminoAcid1 != AminoAcidEnum.OTHER){
+            if (lAminoAcid1 != AminoAcidEnum.OTHER) {
 
                 Vector<AAIndexSubstitution> lAaSubstitutions = (Vector<AAIndexSubstitution>) iMatrix.getValueForAminoAcid(lAminoAcid1);
 
                 int lAddCounter = 0;
 
-                if(lCountAa1>0.0){
+                if (lCountAa1 > 0.0) {
                     double lMutationScore1 = getSubstitutionScore(lAaSubstitutions, lAminoAcid1);
                     double lCalculation = 0.0;
 
                     //do the mutation calculations
                     for (AminoAcidEnum lAminoAcid2 : AminoAcidEnum.values()) {
-                        if(lAminoAcid1 == lAminoAcid2){
+                        if (lAminoAcid1 == lAminoAcid2) {
                             //the amino acid is the same, so the mutation cost 1.0
                             //we will add this cost lCountAa1 - 1 times
                             //lCalculation = lCalculation + (lCountAa1 - 1.0) * lMutationScore1;
-                            if(iNormalizedLine){
+                            if (iNormalizedLine) {
                                 lCalculation = lCalculation + (lCountAa1 - 1.0);
                             } else {
                                 lCalculation = lCalculation + (lCountAa1 - 1.0) * lMutationScore1;
@@ -381,12 +372,17 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                         } else {
                             //get the count for aa2
                             double lCountAa2 = lTotalCount * lStatistics.getStatistics(lAminoAcid2).getMean();
-                            if(lCountAa2>0.0){
+                            if (lCountAa2 > 0.0) {
                                 double lMutationScore2 = getSubstitutionScore(lAaSubstitutions, lAminoAcid2);
                                 //calculate the mutation score
                                 double lCalMutationScore;
-                                if(iNormalizedLine){
-                                    lCalMutationScore = lMutationScore2 / lMutationScore1;
+                                if (iNormalizedLine) {
+                                    if (lMutationScore1 == 0 && lMutationScore2 == 0) {
+                                        lCalMutationScore = 0;
+                                    } else {
+
+                                        lCalMutationScore = lMutationScore2 / lMutationScore1;
+                                    }
                                 } else {
                                     lCalMutationScore = lMutationScore2;
                                 }
@@ -400,11 +396,11 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
                     //System.out.println(lAddCounter);
                     lCalculation = lCalculation / (lAddCounter);
-                    if(lCalculation== Double.NaN){
+                    if (lCalculation == Double.NaN) {
                         System.out.println("-");
                     } else {
                         //we will add the calculated mutation score for lAminoAcid1 lCountAa1 times becuase it is lCountAa1 times the same
-                        for(int j = 0; j<lCountAa1 ;j ++){
+                        for (int j = 0; j < lCountAa1; j++) {
                             lCalStat.addValue(lCalculation);
                         }
                     }
@@ -420,7 +416,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
      */
     public void makeSVG() {
 
-        if(!iUpdating){
+        if (!iUpdating) {
             iUpdating = true;
             //get the info from the MainInformationFeeder
             this.getInfo();
@@ -439,26 +435,26 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
             // set the width and height attribute on the svg root element
             svgRoot.setAttributeNS(null, "width", String.valueOf(iLogoWidth - 50));
-            svgRoot.setAttributeNS(null, "height", String.valueOf(iLogoHeigth));
+            svgRoot.setAttributeNS(null, "height", String.valueOf(iLogoHeight));
 
             //paint axis
             Element yAxis = doc.createElementNS(svgNS, "rect");
             yAxis.setAttributeNS(null, "x", "49");
             yAxis.setAttributeNS(null, "y", "50");
             yAxis.setAttributeNS(null, "width", "1");
-            yAxis.setAttributeNS(null, "height", String.valueOf(iLogoHeigth - 80));
+            yAxis.setAttributeNS(null, "height", String.valueOf(iLogoHeight - 80));
             yAxis.setAttributeNS(null, "style", "fill:black");
 
             Element xAxis1 = doc.createElementNS(svgNS, "rect");
             xAxis1.setAttributeNS(null, "x", "49");
-            xAxis1.setAttributeNS(null, "y", String.valueOf(iLogoHeigth - 50));
+            xAxis1.setAttributeNS(null, "y", String.valueOf(iLogoHeight - 50));
             xAxis1.setAttributeNS(null, "width", String.valueOf(iElementWidth * iLogoElements));
             xAxis1.setAttributeNS(null, "height", "1");
             xAxis1.setAttributeNS(null, "style", "fill:black");
 
             Element xAxis2 = doc.createElementNS(svgNS, "rect");
             xAxis2.setAttributeNS(null, "x", "49");
-            xAxis2.setAttributeNS(null, "y", String.valueOf(iLogoHeigth - 30));
+            xAxis2.setAttributeNS(null, "y", String.valueOf(iLogoHeight - 30));
             xAxis2.setAttributeNS(null, "width", String.valueOf(iElementWidth * iLogoElements));
             xAxis2.setAttributeNS(null, "height", "1");
             xAxis2.setAttributeNS(null, "style", "fill:black");
@@ -474,7 +470,8 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             markerLine1.setAttributeNS(null, "d", "M  49,70 L 44,70 L 44,70");
             markerLine1.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
             Element markerLine2 = doc.createElementNS(svgNS, "path");
-            markerLine2.setAttributeNS(null, "d", "M  49," + String.valueOf(70 + (iLogoHeigth - 120) / 2) + " L 44," + String.valueOf(70 + (iLogoHeigth - 120) / 2) + "");
+            System.out.println("d" + "M  49," + String.valueOf(70 + (iLogoHeight - 120) / 2) + " L 44," + String.valueOf(70 + (iLogoHeight - 120) / 2) + "");
+            markerLine2.setAttributeNS(null, "d", "M  49," + String.valueOf(70 + (iLogoHeight - 120) / 2) + " L 44," + String.valueOf(70 + (iLogoHeight - 120) / 2) + "");
             markerLine2.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
 
             Element marker1 = doc.createElementNS(svgNS, "text");
@@ -488,7 +485,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
             Element marker3 = doc.createElementNS(svgNS, "text");
             marker3.setAttributeNS(null, "x", "20");
-            marker3.setAttributeNS(null, "y", String.valueOf(70 + (iLogoHeigth - 70 - 50) / 2));
+            marker3.setAttributeNS(null, "y", String.valueOf(70 + (iLogoHeight - 70 - 50) / 2));
             marker3.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
             marker3.setAttributeNS(null, "text-anchor", "middle");
             Text markerText3 = doc.createTextNode(String.valueOf(Math.round((iMax - (iMax - iMin) / 2) * 100.0) / 100.0));
@@ -502,7 +499,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //paint the number
                 Element number = doc.createElementNS(svgNS, "text");
                 number.setAttributeNS(null, "x", String.valueOf(50 + elementCount * iElementWidth + iElementWidth / 2));
-                number.setAttributeNS(null, "y", String.valueOf(iLogoHeigth - 35));
+                number.setAttributeNS(null, "y", String.valueOf(iLogoHeight - 35));
                 number.setAttributeNS(null, "style", "font-size:14px;fill:black;font-family:Arial");
                 number.setAttributeNS(null, "text-anchor", "middle");
                 Text numberText = doc.createTextNode(String.valueOf(s));
@@ -512,7 +509,8 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //paint a line the enclose the number that is painted
                 elementCount = elementCount + 1;
                 Element line = doc.createElementNS(svgNS, "path");
-                line.setAttributeNS(null, "d", "M  " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeigth - 30) + " L " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeigth - 50));
+                System.out.println("d" + "M  " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeight - 30) + " L " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeight - 50));
+                line.setAttributeNS(null, "d", "M  " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeight - 30) + " L " + String.valueOf(49 + elementCount * iElementWidth) + "," + String.valueOf(iLogoHeight - 50));
                 line.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1");
                 svgRoot.appendChild(line);
             }
@@ -526,7 +524,6 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             svgRoot.appendChild(markerLine2);
 
 
-
             //paint the title
             Element titleAxis2 = doc.createElementNS(svgNS, "text");
             titleAxis2.setAttributeNS(null, "x", String.valueOf(iLogoWidth / 2));
@@ -538,7 +535,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             svgRoot.appendChild(titleAxis2);
 
             //create a double with the maximum vertical height
-            double lMaxVerticalHeight = (double) iLogoHeigth - 100.0;
+            double lMaxVerticalHeight = (double) iLogoHeight - 100.0;
             //create a double with the difference between the max and min
             double lMaxDiff = iMax - iMin;
             //create string where the different point of the lines will be saved in
@@ -555,7 +552,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //the percentage of the lDiff of the whole lMaxDiff
                 double lDiffPerc = lDiff / lMaxDiff;
                 //calculate the y start position
-                double elementStartY = (double) iLogoHeigth - 50.0 - (lMaxVerticalHeight * lDiffPerc);
+                double elementStartY = (double) iLogoHeight - 50.0 - (lMaxVerticalHeight * lDiffPerc);
                 if (p == 0) {
                     //if it's the first point it must start with an M
                     lConfidenceIntervalString = "M  " + String.valueOf(elementStartX) + "," + elementStartY;
@@ -573,7 +570,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //the percentage of the lDiff of the whole lMaxDiff
                 double lDiffPerc = lDiff / lMaxDiff;
                 //calculate the y start position
-                double elementStartY = (double) iLogoHeigth - 50.0 - (lMaxVerticalHeight * lDiffPerc);
+                double elementStartY = (double) iLogoHeight - 50.0 - (lMaxVerticalHeight * lDiffPerc);
                 lConfidenceIntervalString = lConfidenceIntervalString + " L " + String.valueOf(elementStartX) + "," + elementStartY;
             }
             //close the line with a "z"
@@ -581,6 +578,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
             //add this line to the root
             Element lConfidence = doc.createElementNS(svgNS, "path");
+            System.out.println(lConfidenceIntervalString);
             lConfidence.setAttributeNS(null, "d", lConfidenceIntervalString);
             lConfidence.setAttributeNS(null, "style", "fill:#c3c3c3;fill-rule:evenodd;stroke:#000000;stroke-width:0.9;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;opacity:0.27;stroke-miterlimit:4;stroke-dasharray:none");
             svgRoot.appendChild(lConfidence);
@@ -594,7 +592,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //the percentage of the lDiff of the whole lMaxDiff
                 double lDiffPerc = lDiff / lMaxDiff;
                 //calculate the y start position
-                double elementStartY = (double) iLogoHeigth - 50.0 - (lMaxVerticalHeight * lDiffPerc);
+                double elementStartY = (double) iLogoHeight - 50.0 - (lMaxVerticalHeight * lDiffPerc);
                 if (p == 0) {
                     lPositionString = "M  " + String.valueOf(elementStartX) + "," + elementStartY;
                 } else {
@@ -604,12 +602,13 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
             //add this line to the root
             Element lPositionMeans = doc.createElementNS(svgNS, "path");
+            System.out.println(lPositionString);
             lPositionMeans.setAttributeNS(null, "d", lPositionString);
             lPositionMeans.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#00ff00;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none");
             svgRoot.appendChild(lPositionMeans);
 
 
-            if(lUseTwoSets){
+            if (lUseTwoSets) {
                 //add the position means to the string
                 for (int p = 0; p < iSubstitutionResults.size(); p++) {
                     //calculate the x start position
@@ -619,7 +618,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                     //the percentage of the lDiff of the whole lMaxDiff
                     double lDiffPerc = lDiff / lMaxDiff;
                     //calculate the y start position
-                    double elementStartY = (double) iLogoHeigth - 50.0 - (lMaxVerticalHeight * lDiffPerc);
+                    double elementStartY = (double) iLogoHeight - 50.0 - (lMaxVerticalHeight * lDiffPerc);
                     if (p == 0) {
                         lPositionString = "M  " + String.valueOf(elementStartX) + "," + elementStartY;
                     } else {
@@ -629,6 +628,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
 
                 //add this line to the root
                 Element lTwoPositionMeans = doc.createElementNS(svgNS, "path");
+                System.out.println(lPositionString);
                 lTwoPositionMeans.setAttributeNS(null, "d", lPositionString);
                 lTwoPositionMeans.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none");
                 svgRoot.appendChild(lTwoPositionMeans);
@@ -643,7 +643,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
                 //the percentage of the lDiff of the whole lMaxDiff
                 double lDiffPerc = lDiff / lMaxDiff;
                 //calculate the y start position
-                double elementStartY = (double) iLogoHeigth - 50.0 - (lMaxVerticalHeight * lDiffPerc);
+                double elementStartY = (double) iLogoHeight - 50.0 - (lMaxVerticalHeight * lDiffPerc);
                 if (p == 0) {
                     lReferenceString = "M  " + String.valueOf(elementStartX) + "," + elementStartY;
                 } else {
@@ -652,6 +652,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
             }
             //add this line to the root
             Element lReferenceMeans = doc.createElementNS(svgNS, "path");
+            System.out.println(lReferenceString);
             lReferenceMeans.setAttributeNS(null, "d", lReferenceString);
             lReferenceMeans.setAttributeNS(null, "style", "fill:none;fill-rule:evenodd;stroke:#878787;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none");
             svgRoot.appendChild(lReferenceMeans);
@@ -670,7 +671,7 @@ public class ConservationComponent extends JSVGCanvas implements Observer, Savab
      */
     public void update(Observable o, Object arg) {
         //only if one of the following things is changed create a new graph
-        if(arg != null && (arg.equals(ObservableEnum.NOTIFY_CONSERVATION_LINE) || arg.equals(ObservableEnum.NOTIFY_STATISTICAL)  || arg.equals(ObservableEnum.NOTIFY_GRAPHABLE_FRAME_SIZE)  || arg.equals(ObservableEnum.NOTIFY_START_POSITION))){
+        if (arg != null && (arg.equals(ObservableEnum.NOTIFY_CONSERVATION_LINE) || arg.equals(ObservableEnum.NOTIFY_STATISTICAL) || arg.equals(ObservableEnum.NOTIFY_GRAPHABLE_FRAME_SIZE) || arg.equals(ObservableEnum.NOTIFY_START_POSITION))) {
             this.makeSVG();
         }
     }

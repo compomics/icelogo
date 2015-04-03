@@ -128,7 +128,7 @@ public class SubLogoForm implements Observer, Savable, GraphableAcceptor {
         iSubLogoElements.removeAllElements();
         iRegulatedPositions = iDataModel.getRegulatedPositions(iZscore);
         for (int r = 0; r < iRegulatedPositions.length; r++) {
-            RegulatedEntity[] posReg = iRegulatedPositions[r].getPositveRegulatedEntity(iScoringType);
+            RegulatedEntity[] posReg = iRegulatedPositions[r].getPositiveRegulatedEntity(iScoringType);
             for (int e = 0; e < posReg.length; e++) {
                 char aa = posReg[e].getAminoAcid();
                 Vector posSelection = new Vector();

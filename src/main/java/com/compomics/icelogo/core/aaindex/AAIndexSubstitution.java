@@ -33,7 +33,7 @@ public class AAIndexSubstitution {
         return aThreshold < iSubstitutionValue;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public double getSubstiturionValue(){
+    public double getSubstitutionValue(){
         return iSubstitutionValue;
     }
 

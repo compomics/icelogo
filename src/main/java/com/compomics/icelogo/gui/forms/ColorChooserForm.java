@@ -1,6 +1,7 @@
 package com.compomics.icelogo.gui.forms;
 
 import com.compomics.icelogo.core.data.MainInformationFeeder;
+import com.compomics.icelogo.core.enumeration.AminoAcidEnum;
 import com.compomics.icelogo.core.enumeration.ColorEnum;
 import com.compomics.icelogo.core.enumeration.ColorScheme;
 
@@ -154,13 +155,18 @@ public class ColorChooserForm {
     }
 
     public void setColorScheme() {
-        iColorScheme = new ColorScheme((ColorEnum) comboBox2.getSelectedItem(), ColorEnum.BLACK, (ColorEnum) comboBox3.getSelectedItem(), (ColorEnum) comboBox4.getSelectedItem(), (ColorEnum) comboBox5.getSelectedItem(), (ColorEnum) comboBox6.getSelectedItem(), (ColorEnum) comboBox7.getSelectedItem(), (ColorEnum) comboBox8.getSelectedItem(), (ColorEnum) comboBox9.getSelectedItem(), ColorEnum.BLACK, (ColorEnum) comboBox10.getSelectedItem(), (ColorEnum) comboBox11.getSelectedItem(), (ColorEnum) comboBox12.getSelectedItem(), (ColorEnum) comboBox13.getSelectedItem(), ColorEnum.BLACK, (ColorEnum) comboBox14.getSelectedItem(), (ColorEnum) comboBox15.getSelectedItem(), (ColorEnum) comboBox16.getSelectedItem(), (ColorEnum) comboBox17.getSelectedItem(), (ColorEnum) comboBox18.getSelectedItem(), ColorEnum.BLACK, (ColorEnum) comboBox19.getSelectedItem(), (ColorEnum) comboBox20.getSelectedItem(), ColorEnum.BLACK, (ColorEnum) comboBox21.getSelectedItem(), ColorEnum.BLACK);
+
+        iColorScheme = new ColorScheme();
         iInformationFeeder.setColorScheme(iColorScheme);
     }
 
     private void createUIComponents() {
 
+        //todo: change this to color comboboxes
+
         comboBox2 = new JComboBox();
+
+
         comboBox2.setModel(new DefaultComboBoxModel(ColorEnum.values()));
         comboBox3 = new JComboBox();
         comboBox3.setModel(new DefaultComboBoxModel(ColorEnum.values()));
@@ -201,26 +207,26 @@ public class ColorChooserForm {
         comboBox21 = new JComboBox();
         comboBox21.setModel(new DefaultComboBoxModel(ColorEnum.values()));
 
-        comboBox2.setSelectedItem(iColorScheme.getColorA());
-        comboBox3.setSelectedItem(iColorScheme.getColorC());
-        comboBox4.setSelectedItem(iColorScheme.getColorD());
-        comboBox5.setSelectedItem(iColorScheme.getColorE());
-        comboBox6.setSelectedItem(iColorScheme.getColorF());
-        comboBox7.setSelectedItem(iColorScheme.getColorG());
-        comboBox8.setSelectedItem(iColorScheme.getColorH());
-        comboBox9.setSelectedItem(iColorScheme.getColorI());
-        comboBox10.setSelectedItem(iColorScheme.getColorK());
-        comboBox11.setSelectedItem(iColorScheme.getColorL());
-        comboBox12.setSelectedItem(iColorScheme.getColorM());
-        comboBox13.setSelectedItem(iColorScheme.getColorN());
-        comboBox14.setSelectedItem(iColorScheme.getColorP());
-        comboBox15.setSelectedItem(iColorScheme.getColorQ());
-        comboBox16.setSelectedItem(iColorScheme.getColorR());
-        comboBox17.setSelectedItem(iColorScheme.getColorS());
-        comboBox18.setSelectedItem(iColorScheme.getColorT());
-        comboBox19.setSelectedItem(iColorScheme.getColorV());
-        comboBox20.setSelectedItem(iColorScheme.getColorW());
-        comboBox21.setSelectedItem(iColorScheme.getColorY());
+        comboBox2.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.ALA));
+        comboBox3.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.CYS));
+        comboBox4.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.ASP));
+        comboBox5.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.GLU));
+        comboBox6.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.PHE));
+        comboBox7.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.GLY));
+        comboBox8.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.HIS));
+        comboBox9.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.ILE));
+        comboBox10.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.LYS));
+        comboBox11.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.LEU));
+        comboBox12.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.MET));
+        comboBox13.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.ASN));
+        comboBox14.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.PRO));
+        comboBox15.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.GLN));
+        comboBox16.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.ARG));
+        comboBox17.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.SER));
+        comboBox18.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.THR));
+        comboBox19.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.VAL));
+        comboBox20.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.TRP));
+        comboBox21.setSelectedItem(iColorScheme.getAminoAcidColor(AminoAcidEnum.TYR));
     }
 
     public JPanel getContentPane() {
