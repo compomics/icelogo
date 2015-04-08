@@ -21,7 +21,7 @@ IceLogo builds on probability theory to visualize significant conserved sequence
 
 ## IceLogo Server
 
-The iceLogo web application is hosted on http://iomics.ugent.be/icelogoserver/. The iceLogo project can be found [here](https://github.com/compomics/icelogoserver). 
+The iceLogo web application is hosted on http://iomics.ugent.be/icelogoserver/. The iceLogo server project can be found [here](https://github.com/compomics/icelogoserver). 
 
 [Go to top of page](#icelogo)
 
