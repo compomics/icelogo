@@ -10,7 +10,7 @@
 
 ## Project Description
 
-IceLogo builds on probability theory to visualize significant conserved sequence patterns in multiple peptide sequence alignments against background (reference) sequence sets that can be tailored to the studied system and the used protocol. The unique advantages of iceLogo compared to other sequence logo creating tools is that iceLogo has a more dynamic nature and is correcter and completer in the analysis of conserved sequence patterns.
+IceLogo builds on probability theory to visualize significant conserved sequence patterns in multiple peptide sequence alignments against background (reference) sequence sets that can be tailored to the studied system and the used protocol. The unique advantages of iceLogo compared to other sequence logo creating tools is that iceLogo has a more dynamic nature and is more correct and complete in the analysis of conserved sequence patterns.
 
 *Colaert and Helsens et al. Improved visualization of protein consensus sequences by iceLogo. Nature methods (2009) vol. 6 (11) pp. 786-7
 ([http://www.ncbi.nlm.nih.gov/pubmed/19876014 pid: 19876014])*
