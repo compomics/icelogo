@@ -1,4 +1,5 @@
 # iceLogo
+![logo](http://genesis.ugent.be/uvpublicdata/icelogo/icelogo_logo.png) 
 
  * [Project Description](#project-description)
  * [IceLogo Server](#icelogo-server)
