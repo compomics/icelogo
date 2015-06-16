@@ -239,7 +239,7 @@ public class MainInformationFeeder extends Observable {
 
         try {
             // Attempt to load the properties.
-            properties.load(ClassLoader.getSystemResourceAsStream("icelogo.properties"));
+            properties.load(ClassLoader.getSystemResourceAsStream("/icelogo.properties"));
 
             // File 1.
             String lValue;
