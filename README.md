@@ -29,7 +29,7 @@ The iceLogo web application is hosted on http://iomics.ugent.be/icelogoserver/. 
 ----
 
 ## Downloads
-Download iceLogo [here](http://genesis.ugent.be/uvpublicdata/icelogo/icelogo-1.2.zip).
+Download iceLogo [here](https://github.com/compomics/icelogo/releases/download/v1.2/icelogo-1.2.zip).
 
 ### Example Files
   * [Human granzyme B substrate sample set](http://genesis.ugent.be/uvpublicdata/icelogo/grB.txt) (Van Damme et al., MCP 2009)
