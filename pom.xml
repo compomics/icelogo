@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <version>${version.number}</version>
     <name>logo</name>
-    <url>http://code.google.com/p/icelogo/</url>
+    <url>https://github.com/compomics/icelogo</url>
 
     <!-- Set the version number for the whole project -->
     <properties>
@@ -75,7 +75,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/iceLogo-${project.version}/lib</outputDirectory>
+                            <outputDirectory>${project.build.directory}/icelogo-${project.version}/lib</outputDirectory>
                             <overWriteReleases>true</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <excludeTransitive>false</excludeTransitive>
@@ -96,7 +96,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/iceLogo-${project.version}</outputDirectory>
+                            <outputDirectory>${project.build.directory}/icelogo-${project.version}</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>manual/</directory>
@@ -167,6 +167,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
                 <version>2.6.1</version>
                 <executions>
                     <execution>
@@ -193,7 +196,6 @@
                     </execution>
                 </executions>
             </plugin>
-
            
         </plugins>
     </build>
@@ -202,12 +204,12 @@
     <!-- Repositores -->
     <repositories>
         <!-- UGent Genesis Maven 1 repository -->
-        <repository>
+<!--        <repository>
             <id>genesis-maven-repository</id>
             <name>Genesis repository</name>
             <url>http://genesis.UGent.be/maven</url>
             <layout>legacy</layout>
-        </repository>
+        </repository>-->
 
         <!-- UGent Genesis Maven 2 repository -->
         <repository>
@@ -255,7 +257,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>3.1.12-bin</version>
+            <!--<version>3.1.12-bin</version>-->
+            <version>6.0.6</version>
             <type>jar</type>
         </dependency>
 
@@ -305,17 +308,17 @@
         <!-- This project depends on the jcommon JAR file.
           -->
         <dependency>
-            <groupId>jfree</groupId>
+            <groupId>org.jfree</groupId>
             <artifactId>jcommon</artifactId>
-            <version>1.0.13</version>
+            <version>1.0.17</version>
             <type>jar</type>
         </dependency>
         <!-- This project depends on the jfreechart JAR file.
           -->
         <dependency>
-            <groupId>jfree</groupId>
+            <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
-            <version>1.0.10</version>
+            <version>1.0.17</version>
             <type>jar</type>
         </dependency>
         <!-- This project depends on the xxindex JAR file.

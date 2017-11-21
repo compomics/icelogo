@@ -1,0 +1,6 @@
+/target/
+pom.xml~
+.gitignore~
+compomics-utilities-log4j.log
+*.iml
+.idea/
