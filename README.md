@@ -40,7 +40,7 @@ Download iceLogo [here](https://github.com/compomics/icelogo/releases/download/v
 ----
 
 ## Usage
-Download the manual [here](http://genesis.ugent.be/uvpublicdata/icelogo/iceLogo.pdf).
+Download the manual [here](https://github.com/compomics/icelogo/blob/master/manual/iceLogo.pdf).
 
 [Go to top of page](#icelogo)
 
