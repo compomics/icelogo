@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>be.proteomics</groupId>
+    <groupId>com.compomics</groupId>
     <artifactId>logo</artifactId>
     <packaging>jar</packaging>
     <version>${version.number}</version>
@@ -10,7 +11,7 @@
 
     <!-- Set the version number for the whole project -->
     <properties>
-        <version.number>1.2</version.number>
+        <version.number>1.3.6</version.number>
     </properties>
 
     <!-- Licence -->
@@ -63,7 +64,7 @@
                 </configuration>
             </plugin>
 
-             <!-- Dependency plugin -->
+            <!-- Dependency plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -196,20 +197,13 @@
                     </execution>
                 </executions>
             </plugin>
-           
+
         </plugins>
     </build>
 
 
     <!-- Repositores -->
     <repositories>
-        <!-- UGent Genesis Maven 1 repository -->
-<!--        <repository>
-            <id>genesis-maven-repository</id>
-            <name>Genesis repository</name>
-            <url>http://genesis.UGent.be/maven</url>
-            <layout>legacy</layout>
-        </repository>-->
 
         <!-- UGent Genesis Maven 2 repository -->
         <repository>
@@ -224,7 +218,7 @@
     <!-- Dependencies -->
     <dependencies>
         <!-- This project depends on the junit JAR file.
-          -->
+        -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -233,8 +227,8 @@
         </dependency>
 
         <!-- This project depends on the JAR file "lmjunit-1.1.jar" (TestCaseLM)
-             the remote repository root of which is 'http://genesis.UGent.be/maven'.
-          -->
+           the remote repository root of which is 'http://genesis.UGent.be/maven'.
+        -->
         <dependency>
             <groupId>lennart</groupId>
             <artifactId>lmjunit</artifactId>
@@ -243,17 +237,16 @@
         </dependency>
 
         <!-- This project depends on the JAR file "xpp-1.1.3.4.jar" (XmlPullParser)
-              the remote repository root of which is 'http://genesis.UGent.be/maven'.
-          -->
+            the remote repository root of which is 'http://genesis.UGent.be/maven'.
+        -->
         <dependency>
             <groupId>xpp3</groupId>
             <artifactId>xpp3</artifactId>
-            <version>1.1.3.4-RC3</version>
-            <type>jar</type>
+            <version>1.1.3.4-RC8</version>
         </dependency>
 
         <!-- This project depends on the MySQL JAR file.
-          -->
+        -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -263,7 +256,7 @@
         </dependency>
 
         <!-- This project depends on the statlib JAR file.
-          -->
+        -->
         <dependency>
             <groupId>lennart</groupId>
             <artifactId>statlib</artifactId>
@@ -272,25 +265,45 @@
         </dependency>
 
         <!-- This project depends on the utilities JAR file.
-          -->
+        -->
         <dependency>
             <groupId>com.compomics</groupId>
             <artifactId>utilities</artifactId>
-            <version>3.0.3</version>
+            <version>4.2.9</version>
             <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>batik</groupId>
+                    <artifactId>batik-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>no.uib</groupId>
+                    <artifactId>jsparklines</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>no.uib</groupId>
+                    <artifactId>ols-dialog</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-		
-		<!-- This project depends on the utilities JAR file.
-          -->
+
+        <!-- This project depends on the utilities JAR file.
+        -->
         <dependency>
             <groupId>com.compomics</groupId>
             <artifactId>dbtoolkit</artifactId>
-            <version>4.1.1</version>
+            <version>4.2.6</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.compomics</groupId>
+                    <artifactId>utilities</artifactId>
+                </exclusion>
+            </exclusions>
             <type>jar</type>
         </dependency>
 
         <!-- This project depends on the commons-math JAR file.
-          -->
+        -->
         <dependency>
             <groupId>commons-math</groupId>
             <artifactId>commons-math</artifactId>
@@ -298,7 +311,7 @@
             <type>jar</type>
         </dependency>
         <!-- This project depends on the iText JAR file.
-          -->
+        -->
         <dependency>
             <groupId>itext</groupId>
             <artifactId>iText</artifactId>
@@ -306,7 +319,7 @@
             <type>jar</type>
         </dependency>
         <!-- This project depends on the jcommon JAR file.
-          -->
+        -->
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jcommon</artifactId>
@@ -314,7 +327,7 @@
             <type>jar</type>
         </dependency>
         <!-- This project depends on the jfreechart JAR file.
-          -->
+        -->
         <dependency>
             <groupId>org.jfree</groupId>
             <artifactId>jfreechart</artifactId>
@@ -322,7 +335,7 @@
             <type>jar</type>
         </dependency>
         <!-- This project depends on the xxindex JAR file.
-          -->
+        -->
         <dependency>
             <groupId>lennart</groupId>
             <artifactId>xxindex</artifactId>
@@ -330,34 +343,22 @@
             <type>jar</type>
         </dependency>
         <!-- This project depends on the xxindex JAR file.
-          -->
+        -->
         <dependency>
             <groupId>lennart</groupId>
             <artifactId>cpdetector</artifactId>
             <version>1.0.4</version>
             <type>jar</type>
         </dependency>
-		
-        <!-- This project depends on the batik for generating SVG graphics.
-          -->
+
         <dependency>
             <groupId>batik</groupId>
             <artifactId>batik-all</artifactId>
             <version>1.6</version>
-            <type>jar</type>
         </dependency>
 
         <!-- This project depends on the iText pdf library for pdf output.
-          -->
-        <dependency>
-            <groupId>batik</groupId>
-            <artifactId>pdf-transcoder</artifactId>
-            <version>1.0</version>
-            <type>jar</type>
-        </dependency>
-
-        <!-- This project depends on the iText pdf library for pdf output.
-                  -->
+        -->
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
@@ -366,16 +367,16 @@
         </dependency>
 
         <!-- This project depends on the javax servlet api.
-         -->
+        -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.4</version>
             <type>jar</type>
         </dependency>
-				
+
         <!-- This project depends on the jgoodies JAR file.
-          -->
+        -->
         <dependency>
             <groupId>com.jgoodies</groupId>
             <artifactId>looks</artifactId>
@@ -384,12 +385,23 @@
         </dependency>
     </dependencies>
 
+    <!-- The deployment maven repository-->
     <distributionManagement>
+
+        <!-- UGent Genesis archiva repository -->
         <repository>
-            <id>genesis-maven2-repo</id>
-            <name>Genesis Maven2 Repository</name>
-            <url>scp://genesis.ugent.be/home/maven/public_html/maven2</url>
+            <id>archiva.compomics_maven_2</id>
+            <name>Internal Release Repository</name>
+            <url>http://genesis.ugent.be/archiva/repository/compomics_maven_2</url>
         </repository>
+
+        <!-- UGent Genesis archiva snapshot repository -->
+        <snapshotRepository>
+            <id>archiva.snapshots</id>
+            <name>Internal Snapshot Repository</name>
+            <url>http://genesis.ugent.be/archiva/repository/snapshots</url>
+        </snapshotRepository>
+
     </distributionManagement>
 
 </project>

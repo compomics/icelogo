@@ -24,7 +24,7 @@ public class TestNormalDistribution extends TestCase {
             Assert.assertEquals(0.024997895148220428, dist.cumulativeProbability(-1.96));
             Assert.assertEquals(0.9494974165258964, dist.cumulativeProbability(1.64));
             Assert.assertEquals(0.9750021048517796, dist.cumulativeProbability(1.96));
-            Assert.assertEquals(1.6448536283610324, dist.inverseCumulativeProbability(0.95));
+            Assert.assertEquals(1.6448536283610324, dist.inverseCumulativeProbability(0.95), 0.0000001);
             //Assert.assertEquals(-1.6448536283610324, dist.inverseCumulativeProbability(0.05));
             //Assert.assertEquals(-1.6448536283610324, dist.inverseCumulativeProbability(0.05));
             Assert.assertEquals(0.9500042097035593, dist.cumulativeProbability(-1.96, 1.96));

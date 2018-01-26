@@ -215,7 +215,7 @@ public class MainInformationFeeder extends Observable {
     private int iPositionSampleSize = 30;
     private boolean boolTwoExperiment = false;
     private int iHeatMapMagnitude = 2;
-    private ColorScheme iColorScheme;
+    private ColorScheme iColorScheme = new ColorScheme();
 
 
 // -------------------------- STATIC METHODS --------------------------
@@ -425,12 +425,12 @@ public class MainInformationFeeder extends Observable {
         }
 
         // Write properties file.
-        try {
-            String lPath = getParentPathToConfiguration();
-            properties.store(new FileOutputStream(lPath + "icelogo.properties", false), "icelogo properties");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            String lPath = getParentPathToConfiguration();
+//            properties.store(new FileOutputStream(lPath + "icelogo.properties", false), "icelogo properties");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -446,7 +446,7 @@ public class MainInformationFeeder extends Observable {
         lPathToFile = lPathToFile.replace("%20", " ");
         int lEnd = 1;
         String lOS = getOsName();
-        if (lOS.equals("mac") || lOS.equals("unix")) {
+        if (lOS.equals("mac") || lOS.equals("linux") || lOS.equals("unix")) {
             lEnd = lPathToFile.lastIndexOf('/') + 1;
         } else if (lOS.equals("windows")) {
             lEnd = lPathToFile.lastIndexOf("/") + 1;

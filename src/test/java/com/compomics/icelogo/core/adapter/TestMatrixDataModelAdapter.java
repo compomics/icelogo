@@ -1,12 +1,12 @@
 package com.compomics.icelogo.core.adapter;
 /**
  * Created by IntelliJ IDEA.
- *
+ * <p>
  * User: Kenny
  * Date: 18-sep-2008
  * Time: 10:27:12
- *
- *
+ * <p>
+ * <p>
  * The 'TestMatrixDataModelAdapter ' class was created for
  */
 
@@ -40,7 +40,7 @@ public class TestMatrixDataModelAdapter extends TestCaseLM {
 
     public void testGetMaxValue() {
         Object o = iHeatmapAdapter.getMaxValue();
-        Assert.assertEquals(0.9977867370710403, o);
+        Assert.assertEquals(0.9977867370710403, (Double) o, 0.0000001);
     }
 
     public void testGetMinValue() {
@@ -75,10 +75,10 @@ public class TestMatrixDataModelAdapter extends TestCaseLM {
 
         // Met (row 6) at pos '1'
         o = iHeatmapAdapter.getValueAt(14, 0);
-        Assert.assertEquals(0.9977867370710402, o);
+        Assert.assertEquals(0.9977867370710402, (Double) o, 0.00000001);
 
         // Ala (row 1) at pos '2'
         o = iHeatmapAdapter.getValueAt(1, 1);
-        Assert.assertEquals(0.9953126157702827, o);
+        Assert.assertEquals(0.9953126157702827, (Double) o, 0.0000001);
     }
 }
