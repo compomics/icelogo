@@ -14,7 +14,7 @@ import com.compomics.icelogo.core.stat.StatisticsConversion;
 import com.compomics.icelogo.gui.interfaces.Savable;
 import com.compomics.icelogo.gui.interfaces.HeatMapDataSupplier;
 import com.compomics.icelogo.gui.renderer.DefaultHeatMapCellRenderer;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Element;

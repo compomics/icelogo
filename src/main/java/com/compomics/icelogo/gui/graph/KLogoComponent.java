@@ -8,7 +8,7 @@ import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.enumeration.ScoringTypeEnum;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
 import com.compomics.icelogo.gui.interfaces.Savable;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Element;

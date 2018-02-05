@@ -11,7 +11,7 @@
 
     <!-- Set the version number for the whole project -->
     <properties>
-        <version.number>1.3.6</version.number>
+        <version.number>1.3.7</version.number>
     </properties>
 
     <!-- Licence -->
@@ -277,6 +277,10 @@
                     <artifactId>batik-all</artifactId>
                 </exclusion>
                 <exclusion>
+                    <groupId>batik</groupId>
+                    <artifactId>pdf-transcoder</artifactId>
+                </exclusion>
+                <exclusion>
                     <groupId>no.uib</groupId>
                     <artifactId>jsparklines</artifactId>
                 </exclusion>
@@ -352,9 +356,15 @@
         </dependency>
 
         <dependency>
-            <groupId>batik</groupId>
+            <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-all</artifactId>
-            <version>1.6</version>
+            <version>1.9.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>fop</artifactId>
+            <version>2.2</version>
         </dependency>
 
         <!-- This project depends on the iText pdf library for pdf output.

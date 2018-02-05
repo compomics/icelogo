@@ -1,6 +1,6 @@
 package com.compomics.icelogo.gui.graph;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.apache.commons.math.stat.descriptive.DescriptiveStatistics;
 import org.w3c.dom.svg.SVGDocument;
