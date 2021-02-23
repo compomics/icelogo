@@ -237,3 +237,5 @@ Niklaas Colaert (kenny.helsens AT UGent.be) is a PhD (or predoctoral as we say i
         * Moved to maven 2 and com.compomics
  - Version 1.2
         * Created datamodel saver to csv file.
+ - Version 1.3.8
+        * Upgraded dependencies (batik, utilities, ...).

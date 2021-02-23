@@ -34,8 +34,8 @@ Frequently Asked Questions
 ---------------------
 3.    ABOUT THE AUTHOR
 ---------------------
-Kenny Helsens (kenny.helsens AT UGent.be) is a PhD (or predoctoral as we say in Europe) student at the lab of Prof. Dr. Kris Gevaert and Prof. Dr. Joël Vandekerckhove in the VIB Department of Medical Protein Research, UGent - Proteome Analysis and Bioinformatics Unit (http://www.proteomics.be/).
-Niklaas Colaert (kenny.helsens AT UGent.be) is a PhD (or predoctoral as we say in Europe) student at the lab of Prof. Dr. Kris Gevaert and Prof. Dr. Joël Vandekerckhove in the VIB Department of Medical Protein Research, UGent - Proteome Analysis and Bioinformatics Unit (http://www.proteomics.be/).
+Kenny Helsens (kenny.helsens AT UGent.be) is a PhD (or predoctoral as we say in Europe) student at the lab of Prof. Dr. Kris Gevaert and Prof. Dr. Joï¿½l Vandekerckhove in the VIB Department of Medical Protein Research, UGent - Proteome Analysis and Bioinformatics Unit (http://www.proteomics.be/).
+Niklaas Colaert (kenny.helsens AT UGent.be) is a PhD (or predoctoral as we say in Europe) student at the lab of Prof. Dr. Kris Gevaert and Prof. Dr. Joï¿½l Vandekerckhove in the VIB Department of Medical Protein Research, UGent - Proteome Analysis and Bioinformatics Unit (http://www.proteomics.be/).
 
 ---------------------
 4.   LICENCE
@@ -237,3 +237,5 @@ Niklaas Colaert (kenny.helsens AT UGent.be) is a PhD (or predoctoral as we say i
         * Moved to maven 2 and com.compomics
  - Version 1.2
         * Created datamodel saver to csv file.
+ - Version 1.3.8
+        * Upgraded dependencies (batik, utilities, ...).

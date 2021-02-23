@@ -11,7 +11,7 @@
 
     <!-- Set the version number for the whole project -->
     <properties>
-        <version.number>1.3.7</version.number>
+        <version.number>1.3.8-SNAPSHOT</version.number>
     </properties>
 
     <!-- Licence -->
@@ -209,7 +209,7 @@
         <repository>
             <id>genesis-maven2-repository</id>
             <name>Genesis maven2 repository</name>
-            <url>http://genesis.UGent.be/maven2</url>
+            <url>http://genesis.UGent.be/maven</url>
             <layout>default</layout>
         </repository>
 
@@ -402,7 +402,7 @@
         <repository>
             <id>archiva.compomics_maven_2</id>
             <name>Internal Release Repository</name>
-            <url>http://genesis.ugent.be/archiva/repository/compomics_maven_2</url>
+            <!--url>http://relims02.ugent.be:8080/repository/maven2</url-->
         </repository>
 
         <!-- UGent Genesis archiva snapshot repository -->

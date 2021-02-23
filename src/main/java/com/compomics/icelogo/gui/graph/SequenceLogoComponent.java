@@ -10,6 +10,7 @@ import com.compomics.icelogo.core.enumeration.ObservableEnum;
 import com.compomics.icelogo.core.interfaces.AminoAcidStatistics;
 import com.compomics.icelogo.core.interfaces.MatrixDataModel;
 import com.compomics.icelogo.gui.interfaces.Savable;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.DOMImplementation;
@@ -119,8 +120,8 @@ public class SequenceLogoComponent extends JSVGCanvas implements Observer, Savab
         iElementWidth = (iLogoWidth - 100) / iLogoElements;
 
 
-//        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
-        DOMImplementation impl = GenericDOMImplementation.getDOMImplementation();
+        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+        //DOMImplementation impl = GenericDOMImplementation.getDOMImplementation();
         String svgNS = "http://www.w3.org/2000/svg";
         doc = (SVGDocument) impl.createDocument(svgNS, "svg", null);
 
