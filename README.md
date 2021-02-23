@@ -29,7 +29,7 @@ The iceLogo web application is hosted on http://iomics.ugent.be/icelogoserver/. 
 ----
 
 ## Downloads
-Download iceLogo [here](https://github.com/compomics/icelogo/releases/download/v1.3.6/icelogo-1.3.zip).
+Download iceLogo [here](https://github.com/compomics/icelogo/releases/download/v1.3.8/icelogo-1.3.8.zip).
 
 ### Example Files
   * [Human granzyme B substrate sample set](http://genesis.ugent.be/uvpublicdata/icelogo/grB.txt) (Van Damme et al., MCP 2009)
@@ -52,7 +52,7 @@ The iceLogo project is grateful for the support by:
 
 | Compomics | VIB | Ghent University|
 |:--:|:--:|:--:|
-| [![compomics](http://genesis.ugent.be/public_data/image/compomics.png)](http://www.compomics.com) | [![vib](http://genesis.ugent.be/public_data/image/vib.png)](http://www.vib.be) | [![ugent](http://genesis.ugent.be/public_data/image/ugent.png)](http://www.ugent.be/en) |
+| [![compomics](http://genesis.ugent.be/uvpublicdata/image/compomics.png)](http://www.compomics.com) | [![vib](http://genesis.ugent.be/uvpublicdata/image/newVIBLogo.png)](http://www.vib.be) | [![ugent](http://genesis.ugent.be/uvpublicdata/image/newUgent.jpg)](http://www.ugent.be/en) |
 
 [Go to top of page](#icelogo)
 
@@ -60,6 +60,6 @@ The iceLogo project is grateful for the support by:
 
 | IntelliJ | Netbeans | Java | Maven |
 |:--:|:--:|:--:|:--:|
-| [![intellij](https://www.jetbrains.com/idea/docs/logo_intellij_idea.png)](https://www.jetbrains.com/idea/) | [![netbeans](https://netbeans.org/images_www/visual-guidelines/NB-logo-single.jpg)](https://netbeans.org/) | [![java](http://genesis.ugent.be/public_data/image/java.png)](http://java.com/en/) | [![maven](http://genesis.ugent.be/public_data/image/maven.png)](http://maven.apache.org/) |
+| [![intellij](http://genesis.ugent.be/uvpublicdata/image/icon_IntelliJIDEA.png)](https://www.jetbrains.com/idea/) | [![netbeans](https://netbeans.org/images_www/visual-guidelines/NB-logo-single.jpg)](https://netbeans.org/) | [![java](http://genesis.ugent.be/uvpublicdata/image/java.png)](http://java.com/en/) | [![maven](http://genesis.ugent.be/uvpublicdata/image/maven.png)](http://maven.apache.org/) |
 
 [Go to top of page](#icelogo)
